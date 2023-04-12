@@ -12,13 +12,14 @@ import Upload, { uploadAction } from './pages/Upload'
 // Layouts
 import RootLayout from './layouts/RootLayout'
 import data from './data'
+import LaptopDetails from './pages/LaptopDetails'
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home img="../images/greenLogo.png" />}/>
-      <Route path="upload" element={<Upload />} action={uploadAction}/>
+      <Route path="upload" element={<LaptopDetails />} action={uploadAction}/>
     </Route>
   )
 )
