@@ -13,13 +13,15 @@ import Upload, { uploadAction } from './pages/Upload'
 import RootLayout from './layouts/RootLayout'
 import data from './data'
 import LaptopDetails from './pages/LaptopDetails'
+import LaptopsList from './pages/LaptopList'
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home img="../images/greenLogo.png" />}/>
-      <Route path="upload" element={<LaptopDetails />} action={uploadAction}/>
+      <Route path="upload/:idx" element={<LaptopDetails />} action={uploadAction}/>
+      <Route path="/unlisted" element={<LaptopsList/>} /> 
     </Route>
   )
 )

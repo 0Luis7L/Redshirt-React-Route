@@ -9,15 +9,22 @@ import PictureComponent from './UploadComponents/PictureComponent'
 import SimilarPost from './UploadComponents/SimilarPost';
 
 
-
+import { useParams } from "react-router-dom";
 import { useState } from 'react'
 
 
 // The page for posting a specific laptop
 function LaptopDetails (){
 
+    // get the index of the laptop from the 
+    const params = useParams()
+
+    // get the current laptop by idx
+    const curr_laptop = laptops[params.idx];
+
     // component parent handlers
-   
+    // state variable determines if this page is processing a relist or creating a new item
+   const [ itemFound , setItemFound] = useState(false);
     
     function handleChange(event){
       const {name, value, type, checked} = event.target
@@ -29,6 +36,13 @@ function LaptopDetails (){
       })
     }
 
+    // function for debugging
+    // just shows the info about curr_laptop
+    function showLaptop(){
+        console.log(JSON.stringify(curr_laptop));
+
+    }
+
     function handleSubmit(event){
       event.preventDefault()
       submitToApi(data)
@@ -37,36 +51,37 @@ function LaptopDetails (){
     // handles the update to the color 
     function handleColorChange( e){
       // changing the color of the laptop, just hard-coded for now
-      laptops[0].color = e.target.value;
-      
+      curr_laptop.Color = e.target.value;
+
+      showLaptop();
       
     }
     function handleConnectChange(connectivity){
-      laptops[0].connectivity = connectivity;
+      curr_laptop.connectivity = connectivity;
       
-      console.log(laptops[0].connectivity);
+      showLaptop();
      
       
     }
     function handleFeatureChange(features){
-      laptops[0].features = features;
-      console.log(laptops[0].features);
+      curr_laptop.features = features;
+      showLaptop();
     }
     function handleTypeChange(e){
-      laptops[0].type = e.target.value;
+      curr_laptop = e.target.value;
       
-      console.log( "This is what the laptop looks currently",JSON.stringify(laptops[0]))
+      showLaptop();
     }
     
   // handles the SimilarPost completion
   function handleSimilarPostSearchComplete( found ){
-      console.log( "item found:", found);
-
+      
+      setItemFound(found);
   }
 
-  const curr_sku = laptops[0].id;
+  const curr_sku = curr_laptop.id;
 
-  console.log( "Laptop when the page loads",JSON.stringify(laptops[0]))
+
 
 
 
@@ -74,20 +89,21 @@ function LaptopDetails (){
 
 
     return (
+
+
         <div className="Upload-go">
          <h1>Here are the inputs</h1>
          <Form method="post" action="/upload/">
           
          <Detail onHandle={handleChange} laptop={laptops[0]}/>
 
-        
-         <Color onHandle={handleColorChange} />
-        <div className='connectivity--features'>
-         <Connect onHandle={handleConnectChange} />
+        { !itemFound ? (
+         <><Color onHandle={handleColorChange} /><div className='connectivity--features'>
+              <Connect onHandle={handleConnectChange} />
 
-         <Features onHandle={handleFeatureChange} />
-         </div>
-        <Type onHandle={handleTypeChange} />
+              <Features onHandle={handleFeatureChange} />
+            </div><Type onHandle={handleTypeChange} /></>
+        ):<></>}
           <div className="pic">
           <PictureComponent sku={ curr_sku } ></PictureComponent>
        
