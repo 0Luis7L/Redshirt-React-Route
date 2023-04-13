@@ -68,7 +68,7 @@ function LaptopDetails (){
       showLaptop();
     }
     function handleTypeChange(e){
-      curr_laptop = e.target.value;
+      curr_laptop.type = e.target.value;
       
       showLaptop();
     }
