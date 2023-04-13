@@ -41,12 +41,12 @@ function LaptopDetails (){
       
       
     }
-    function handleConnectChange(e){
-      laptops[0].connectivity = e.target.value;
+    function handleConnectChange(connectivity){
+      laptops[0].connectivity = connectivity;
+      
+      console.log(laptops[0].connectivity);
      
-
-      console.log( "This is what the laptop looks currently",JSON.stringify(laptops[0]))
-    
+      
     }
     function handleFeatureChange(features){
       laptops[0].features = features;
