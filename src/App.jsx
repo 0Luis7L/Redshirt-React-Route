@@ -15,7 +15,7 @@ import data from './data'
 import LaptopDetails from './pages/LaptopDetails'
 import LaptopsList from './pages/LaptopList'
 
-
+// Update //
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
