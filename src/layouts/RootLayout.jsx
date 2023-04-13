@@ -7,8 +7,8 @@ export default function RootLayout() {
         <header>
           <nav>
             <h1>Project Redshirt</h1>
-            <NavLink to="/">Total Lists</NavLink>
-            <NavLink to="upload">Upload Post</NavLink>
+            <NavLink to="/">Login</NavLink>
+            <NavLink to="/unlisted">Unlisted</NavLink>
           </nav>
         </header>
 
