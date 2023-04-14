@@ -126,3 +126,45 @@ export const  GetUnlisted =  async () =>{
   }
   
   
+  const ROLE_CREDS = [
+      { user: "poster1",
+        pwd:"poster1"},
+      { user: "refurbisher1",
+        pwd: "refurbisher1"}
+
+  ];
+
+  const TOKEN_ROLES = [
+      { 
+        user: "poster1",
+        token: "289rfoijewoi32u0",
+        roles: [2000]
+      },
+
+      { 
+        user:"refurbisher1",
+        token:"20934r0329uewiofj02u",
+        roles: [3000]
+      } 
+
+    ];
+
+  // mock function for logging in returns a token and a role code
+
+  export const CallLogin = async ( creds) =>{
+      console.log('inside CallLogin');
+      let token_role = {}
+      // check the creds 
+      // poster
+      if ( creds.user == 'poster1' && creds.pwd == 'poster1'){
+          token_role = TOKEN_ROLES[0];
+  
+      }
+      // refurbisher
+      else if ( creds.user == 'refurbisher1' && creds.pwd == 'refurbisher1'){
+        token_role = TOKEN_ROLES[1];
+     
+      }
+      
+      return await token_role;
+  }
