@@ -55,7 +55,8 @@ export default function PictureComponent(props){
     
      
       return(
-          <div>
+          <fieldset>
+            <legend>Upload Images</legend>
               
               <p>{ apiResponse } </p>
                 
@@ -69,7 +70,7 @@ export default function PictureComponent(props){
       
               
          
-              </div>
+              </fieldset>
       );
     };
 

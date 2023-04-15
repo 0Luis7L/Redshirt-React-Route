@@ -86,6 +86,13 @@ export default function Detail (props) {
             onChange={props.onHandle}
             value={props.laptop.custom}
             />
+            <input 
+            type="text"
+            placeholder="Price"
+            name="price"
+            onChange={props.onHandle}
+            value={props.laptop.price}
+            />
         </div>
     )
 }

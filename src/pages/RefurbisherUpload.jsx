@@ -1,8 +1,9 @@
-function RefurbisherUpload(){
-
-
+export default function RefurbisherUpload(){
 
     return ( 
-    {/*  PUT ALL THE UPLOAD STUFF HERE PLS */}
+    <fieldset>
+        <legend>Refurbish-Upload</legend>
+        <input type="file" />
+    </fieldset>
     )
 }
