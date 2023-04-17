@@ -6,15 +6,17 @@ export default function Login(){
     return ( 
         <div className="login-card">
         <form>
-            <div className='login-heading'>
-                <h1 className="login">Welcome</h1>
-                <h2 className="login">Login</h2>
+            <div>
+                <h1 className="login-heading">Welcome</h1>
+                <h2 className="login-heading">Login</h2>
             </div>
             <div className="login-inputs">
-                <input className="login--input" type="email" placeholder="email"/>
-                <input className="login--input" type="text" placeholder="password" />
+                <input type="email" placeholder="Email"/>
+                <input type="password" placeholder="Password" />
             </div>
-            <button className='loginBTN' type='submit'>Login</button>
+            <div className="loginBTN">
+                <button className="BTNlogin" type='submit'>Login</button>
+            </div>
         </form>
     </div>
     )

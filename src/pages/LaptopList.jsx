@@ -37,8 +37,8 @@ export default function LaptopsList( ) {
                         // map the results to a list of laptops , as links
                         let idx=0;
                         const items = result.map( (lt) => ( 
-                          <li key={lt.id}>
-                              <Link to={`/upload/${idx++}`}>{lt.id} {lt.make}  {lt.model} {lt.cpu}</Link>
+                          <li className='Laptop' key={lt.id}>
+                              <Link  to={`/upload/${idx++}`}>{lt.id} {lt.make}  {lt.model} {lt.cpu}</Link>
 
 
                           </li>
@@ -54,6 +54,14 @@ export default function LaptopsList( ) {
            
         },[]);
 
-         return ( <>{ laptopList }</> );
+         return (
+          <div>
+            <h1>Laptop List</h1>
+            <p style={{marginTop: ('20px')}}>Here are the listed laptops that need to be checked:</p>
+            <div className="Laptops">
+              <>{ laptopList }</>
+            </div>
+          </div>
+         );
 
 };

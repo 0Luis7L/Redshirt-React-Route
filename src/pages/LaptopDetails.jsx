@@ -92,7 +92,8 @@ function LaptopDetails (){
 
 
         <div className="Upload-go">
-         <h1>Here are the inputs</h1>
+         <h1>Update Laptop</h1>
+         <p>Provide laptop details below:</p>
          <Form method="post" action="/upload/">
           
          <Detail onHandle={handleChange} laptop={laptops[0]}/>
@@ -112,7 +113,7 @@ function LaptopDetails (){
           <SimilarPost sku={ curr_sku } SearchComplete={handleSimilarPostSearchComplete} ></SimilarPost>
           </div>
           <br />
-          <button>Submit</button>
+          <button className='submit'>Submit</button>
          </Form>
     
         </div>
