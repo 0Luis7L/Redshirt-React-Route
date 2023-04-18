@@ -67,10 +67,10 @@ export default function Detail (props) {
             />
             <input 
             type="text"
-            placeholder="notes"
-            name="notes"
+            placeholder="Price"
+            name="price"
             onChange={props.onHandle}
-            value={props.laptop.notes}
+            value={props.laptop.price}
             />
             <input 
             type="text"
@@ -85,6 +85,14 @@ export default function Detail (props) {
             name="custom"
             onChange={props.onHandle}
             value={props.laptop.custom}
+            />
+            
+            <textarea 
+            type="text"
+            placeholder="notes"
+            name="notes"
+            onChange={props.onHandle}
+            value={props.laptop.notes}
             />
         </div>
     )

@@ -59,10 +59,11 @@ export default function SimilarPost ( props ){
 
 
     return ( 
-            <div> 
+            <fieldset>
+                <legend>Similar Post</legend>
                 <a href={ itemFound }> {title } </a>
                  { itemId } 
-                 </div>)
+            </fieldset>)
 
 
 }

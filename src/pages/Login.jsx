@@ -41,20 +41,29 @@ export default function Login(){
         // to do:  set the  token in localstorage
         
     }
+    // this just prevents the default behavior
+    function formSubmit(e){
+        e.preventDefault();
+
+    }
 
     return ( 
         <div className="login-card">
-   {/*    <form>  */}
-            <div className='login-heading'>
-                <h1 className="login">Welcome</h1>
-                <h2 className="login">Login</h2>
-            </div>
-            <div className="login-inputs">
-                <input className="login--input" type="text" placeholder="email" onChange={handleUserChange}/>
-                <input className="login--input" type="text" placeholder="password"  onChange={handlePwdChange} />
-            </div>
-            <button className='loginBTN'  onClick={handleLogin}>Login</button>
- {/*       </form>          */}
+      <form onSubmit={ formSubmit }>
+      <div>
+          <h1 className="login-heading">Welcome</h1>
+          <h2 className="login-heading">Login</h2>
+      </div>
+      <div className="login-inputs">
+          <input type="text" onChange={handleUserChange} placeholder="Email"/>
+          <input type="password" onChange={ handlePwdChange } placeholder="Password" />
+      </div>
+      <div className="loginBTN">
+          <button className="BTNlogin" onClick={handleLogin} type='submit'>Login</button>
+      </div>
+  </form>
+
+    
     </div>
     )
 }

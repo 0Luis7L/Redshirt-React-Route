@@ -1,4 +1,3 @@
-//import './App.css'
 import {
   createBrowserRouter,
   Route,
@@ -8,12 +7,13 @@ import {
 from 'react-router-dom'
 // Pages
 import LaptopDetails from './pages/LaptopDetails'
-
+import RefurbisherUpload from './pages/RefurbisherUpload'
 import LaptopsList from './pages/LaptopList'
 import Login from './pages/Login'
+import Error from './pages/Error'
+import Unauthorized from './pages/Unauthorized'
 // Layouts
 import RootLayout from './layouts/RootLayout'
-import Home from './pages/Home'
 import RequireAuth from './components/RequireAuth'
 
 
@@ -24,21 +24,25 @@ const ROLES = {
 
 }
 
+
 // Update //
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
+      {/* these are public routes */ }
       <Route path="/" element={<Login />} />
+      <Route path="/unauthorized" element={<Unauthorized />}/>
+      <Route path="*" element={<Error />} />
       { /*  these are protected routes */}
       { /*  poster role only */}
       <Route element={<RequireAuth allowedRoles={[ROLES.poster]} />}>
       <Route path="/unlisted" element={<LaptopsList/>} /> 
       <Route path="/upload/:idx" element={<LaptopDetails />} />
       </Route>
-
-      
-
-      
+      <Route element={<RequireAuth allowedRoles={[ROLES.refurbisher]} />}>
+      <Route path="/refurbish" element={<RefurbisherUpload />} />
+    
+      </Route>
     </Route>
   )
 )

@@ -31,7 +31,7 @@ export default function Connect (props){
                 type="checkbox"
                 id="DisplayPort"
                 name="connect"
-              
+                className="Hope"
                
                 />
                 <label htmlFor="DisplayPort">DisplayPort</label>
