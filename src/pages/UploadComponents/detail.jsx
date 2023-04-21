@@ -1,5 +1,7 @@
 
 export default function Detail (props) {
+
+    console.log("custom on load",props.laptop.custom)
     return (
         <div className="details">
             <input 
@@ -79,12 +81,14 @@ export default function Detail (props) {
             onChange={props.onHandle}
             value={props.laptop.screenSize}
             />
+            
             <input 
-            type="text"
+            type="checkbox"
             placeholder="custom"
             name="custom"
-            onChange={props.onHandle}
-            value={props.laptop.custom}
+            onChange={props.customChanged}
+            value="custom"
+            checked={ props.isCustom }
             />
             
             <textarea 

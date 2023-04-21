@@ -13,8 +13,8 @@ import Login from './pages/Login'
 import Error from './pages/Error'
 import Unauthorized from './pages/Unauthorized'
 // Layouts
-import RootLayout from './layouts/RootLayout'
 import RequireAuth from './components/RequireAuth'
+import RootLayout from './layouts/RootLayout'
 
 
 
@@ -28,7 +28,7 @@ const ROLES = {
 // Update //
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
+    <Route path="/" element={<RootLayout />} error={<Error/>}>
       {/* these are public routes */ }
       <Route path="/" element={<Login />} />
       <Route path="/unauthorized" element={<Unauthorized />}/>
@@ -44,6 +44,7 @@ const router = createBrowserRouter(
     
       </Route>
     </Route>
+    
   )
 )
 

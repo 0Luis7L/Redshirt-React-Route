@@ -1,9 +1,13 @@
 import useAuth from '../hooks/useAuth'
 import { useState} from 'react'
 import { CallLogin } from './UploadComponents/rs-api-mocks'
+import { Navigate, useNavigate } from 'react-router-dom';
 
 // All this should be new!!!
 export default function Login(){
+
+    // for navigation post login
+    const navigate = useNavigate();
 
     const { setAuth } = useAuth();
     // state variables for username , pwd
@@ -37,8 +41,17 @@ export default function Login(){
         
         // check to see if valid user
         setAuth(result);
+                        
 
         // to do:  set the  token in localstorage
+
+        
+        // now based on the role navigate to default page
+        if( result.roles[0] == 2000)
+                        navigate("/unlisted");
+        if( result.roles[0] == 3000)
+                        navigate("/refurbish");
+        
         
     }
     // this just prevents the default behavior
