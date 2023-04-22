@@ -1,10 +1,12 @@
 // this file is going to stub out all the rest calls to redshirt-api
 
+export let laptop_list = [];
+
 // gets the unlisted laptops
 export const  GetUnlisted =  async () =>{
-   
 
-    let  laptops = [
+
+     let remote_laptops = [
       {
         "id": 10001,
         "make": "Dell",
@@ -42,10 +44,31 @@ export const  GetUnlisted =  async () =>{
         "connectivity": [],
         "price": 0,
         "color": ""
+      },
+      
+      {
+        "id": 10003,
+        "make": "HP",
+        "model": "Spectre x360",
+        "resolution": "1920 x 1080",
+        "cpu": "i5-5200U",
+        "speed": "2.20 GHz",
+        "ram": 16,
+        "storage": "512 GB SSD",
+        "gpu": "NVIDIA GeForce GTX",
+        "os": "Microsoft Windows 10 Pro",
+        "notes": "backlit keyboard",
+        "screenSize": "15.6",
+        "custom": false,
+        "features": [],
+        "connectivity": [],
+        "price": 0,
+        "color": ""
       }
+
       ];
-    
-    return laptops;
+    laptop_list = remote_laptops;
+    return remote_laptops;
   
   }
   
@@ -55,9 +78,9 @@ export const  GetUnlisted =  async () =>{
     let res ;
     // found some
     if ( sku === 10001){
-      res = [  "https://ebay-imgs.s3.us-east-2.amazonaws.com/Dell/XPS-12-Ultrabook/Intel-Core-i5-7th-gen/OIP1.jpg",
-        "https://ebay-imgs.s3.us-east-2.amazonaws.com/Dell/XPS-12-Ultrabook/Intel-Core-i5-7th-gen/OIP2.jpg",
-        "https://ebay-imgs.s3.us-east-2.amazonaws.com/Dell/XPS-12-Ultrabook/Intel-Core-i5-7th-gen/OIP3.jpg" ];
+      res = [  "https://ebay-imgs.s3.us-east-2.amazonaws.com/dell/xps-12-ultrabook/intel-core-i5-7th-gen/OIP1.jpg",
+        "https://ebay-imgs.s3.us-east-2.amazonaws.com/dell/xps-12-ultrabook/intel-core-i5-7th-gen/OIP2.jpg",
+        "https://ebay-imgs.s3.us-east-2.amazonaws.com/dell/xps-12-ultrabook/intel-core-i5-7th-gen/OIP3.jpg" ];
     } else{
   
         // none found
@@ -71,9 +94,9 @@ export const  GetUnlisted =  async () =>{
     dummy data to pass back, these pics already exist on s3
   */
   const extra_pics = [
-    "https://ebay-imgs.s3.us-east-2.amazonaws.com/Dell/XPS-12-Ultrabook/Intel-Core-i5-7th-gen/OIP4.jpg",
-    "https://ebay-imgs.s3.us-east-2.amazonaws.com/Dell/XPS-12-Ultrabook/Intel-Core-i5-7th-gen/OIP5.jpg",
-    "https://ebay-imgs.s3.us-east-2.amazonaws.com/Dell/XPS-12-Ultrabook/Intel-Core-i5-7th-gen/OIP6.jpg"
+    "https://ebay-imgs.s3.us-east-2.amazonaws.com/dell/xps-12-ultrabook/intel-core-i5-7th-gen/OIP4.jpg",
+    "https://ebay-imgs.s3.us-east-2.amazonaws.com/dell/xps-12-ultrabook/intel-core-i5-7th-gen/OIP5.jpg",
+    "https://ebay-imgs.s3.us-east-2.amazonaws.com/dell/xps-12-ultrabook/intel-core-i5-7th-gen/OIP6.jpg"
   ];
   
   let idx = 0;
@@ -126,3 +149,86 @@ export const  GetUnlisted =  async () =>{
   }
   
   
+  const ROLE_CREDS = [
+      { user: "poster1",
+        pwd:"poster1"},
+      { user: "refurbisher1",
+        pwd: "refurbisher1"}
+
+  ];
+
+  const TOKEN_ROLES = [
+      { 
+        user: "poster1",
+        token: "289rfoijewoi32u0",
+        roles: [2000]
+      },
+
+      { 
+        user:"refurbisher1",
+        token:"20934r0329uewiofj02u",
+        roles: [3000]
+      } 
+
+    ];
+
+  // mock function for logging in returns a token and a role code
+
+  export const CallLogin = async ( creds) =>{
+      console.log('inside CallLogin');
+      let token_role = {}
+      // check the creds 
+      // poster
+      if ( creds.user == 'poster1' && creds.pwd == 'poster1'){
+          token_role = TOKEN_ROLES[0];
+  
+      }
+      // refurbisher
+      else if ( creds.user == 'refurbisher1' && creds.pwd == 'refurbisher1'){
+        token_role = TOKEN_ROLES[1];
+     
+      }
+      
+      return await token_role;
+  }
+
+  // constants for debugging
+  const posted_items = [
+    { id: 123456,
+      title:"This is a completely new item",
+      sku:"4/23 10001",
+      url:"https://ebay.com"},
+    {
+      id: 123457,
+      title:"This is an updated item",
+      sku:"4/23 10000, 10002",
+      url:"https://ebay.com"
+    }
+
+  ];
+
+  // function for creating a new Item 
+  // returns an item object
+  export async function CreateItem( laptop){
+      // just returning a dummy item for now
+      return await posted_items[0];
+  }
+
+
+  // mock function for updating an item
+  // returns an item object
+  export async function ReviseItem( id){
+      // just returning a dummy item for now
+      return await posted_items[1];
+  }
+
+
+// refurbisher upload callback
+
+export async function UploadCsv( file ){
+    // just mocking this for now
+    // but very similar to picture upload
+
+    return  await 3;
+
+}

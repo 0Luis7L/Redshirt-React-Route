@@ -1,4 +1,4 @@
-import laptops from './data/data'
+import {laptop_list, CreateItem, ReviseItem} from './UploadComponents/rs-api-mocks'
 import { Form, redirect } from "react-router-dom";
 import Color from './UploadComponents/color'
 import Detail from './UploadComponents/detail'
@@ -11,6 +11,7 @@ import SimilarPost from './UploadComponents/SimilarPost';
 
 import { useParams } from "react-router-dom";
 import { useState } from 'react'
+import PostedItem from './UploadComponents/PostedItem';
 
 
 // The page for posting a specific laptop
@@ -19,12 +20,19 @@ function LaptopDetails (){
     // get the index of the laptop from the 
     const params = useParams()
 
+     console.log(params.idx)
     // get the current laptop by idx
-    const curr_laptop = laptops[params.idx];
+    const curr_laptop = laptop_list[params.idx];
+
+    // state variable set to custom flag for laptop
+    const [ custom , setCustom ] = useState( curr_laptop.custom)
 
     // component parent handlers
     // state variable determines if this page is processing a relist or creating a new item
    const [ itemFound , setItemFound] = useState(false);
+
+   // set to true after a successful submit response , false by defualt
+   const [ itemPosted, setItemPosted] = useState(false);
     
     function handleChange(event){
       const {name, value, type, checked} = event.target
@@ -68,7 +76,7 @@ function LaptopDetails (){
       showLaptop();
     }
     function handleTypeChange(e){
-      curr_laptop.type = e.target.value;
+      curr_laptop = e.target.value;
       
       showLaptop();
     }
@@ -79,26 +87,50 @@ function LaptopDetails (){
       setItemFound(found);
   }
 
+
+   // handler passed to detail component 
+   // handles change of custom / non-custom
+   function handleCustomChange( e){
+      curr_laptop.custom = e.target.checked;
+      setCustom(curr_laptop.custom);
+      console.log("current laptop custom:" , curr_laptop.custom);
+   }
+
+   // handler function for the submit buttonClick
+   const  handleLaptopSubmit = async (e) =>{
+      e.preventDefault();
+      // Two different scenarios
+      // 1) the laptop is not custom and there is a similar post ( just update)
+      console.log("inside form handler")
+      let resp = {};
+      if( !custom && itemFound){
+        resp =  await   ReviseItem(curr_laptop.id);
+      } 
+      // 2)  just create a new item 
+      else{
+        resp = await CreateItem(curr_laptop);
+      }
+
+      // update the dom , and show the resp 
+      setItemPosted(resp);
+
+
+   }
+
   const curr_sku = curr_laptop.id;
 
 
-
-
-
-
-
-
     return (
-
-
+      <>
+        { !itemPosted ?       
         <div className="Upload-go">
          <h1>Update Laptop</h1>
          <p>Provide laptop details below:</p>
-         <Form method="post" action="/upload/">
+         <Form  onSubmit={ handleLaptopSubmit }>
           
-         <Detail onHandle={handleChange} laptop={laptops[0]}/>
+         <Detail onHandle={handleChange} laptop={curr_laptop} customChanged={handleCustomChange} isCustom={custom}/>
 
-        { !itemFound ? (
+        { !itemFound || custom ?  (
          <><Color onHandle={handleColorChange} /><div className='connectivity--features'>
               <Connect onHandle={handleConnectChange} />
 
@@ -113,10 +145,14 @@ function LaptopDetails (){
           <SimilarPost sku={ curr_sku } SearchComplete={handleSimilarPostSearchComplete} ></SimilarPost>
           </div>
           <br />
-          <button className='submit'>Submit</button>
+          <button className='submit' >Submit</button>
          </Form>
-    
-        </div>
+      
+        </div>  :
+        <PostedItem item={itemPosted} ></PostedItem>  }
+      
+      </>
+        
       )
 
       

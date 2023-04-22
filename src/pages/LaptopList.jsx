@@ -2,6 +2,7 @@
 import {Link} from 'react-router-dom'
 import {  useState,useEffect} from 'react'
 import { GetUnlisted } from './UploadComponents/rs-api-mocks';
+import laptops from './data/data';
 
 // this component is used to query the redshirt api 
 // for laptop a list of laptops that need to be posted
@@ -23,6 +24,8 @@ export default function LaptopsList( ) {
             // just return the response , could be null
          //   const jsonResponse = await response.json();
            // console.log(jsonResponse);
+          // set laptops to response
+         
           return response;
         };
 
