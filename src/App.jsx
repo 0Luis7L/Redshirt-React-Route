@@ -34,6 +34,14 @@ const ROLES = {
 
 
 
+const ROLES = {
+    'poster': 2000,
+    'refurbisher': 3000
+
+}
+
+
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />} error={<Error/>}>
