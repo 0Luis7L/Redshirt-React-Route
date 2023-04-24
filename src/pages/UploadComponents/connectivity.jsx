@@ -35,7 +35,7 @@ export default function Connect (props){
                
                 />
                 <label htmlFor="DisplayPort">DisplayPort</label>
-                <br />
+                
                 <input
                 type="checkbox"
                 id="Ethernet"
@@ -44,7 +44,7 @@ export default function Connect (props){
                
                 />
                 <label htmlFor="Ethernet">Gigabit Ethernet</label>
-                <br />
+                
                 <input
                 type="checkbox"
                 id="MiniDisplayport"
@@ -61,7 +61,7 @@ export default function Connect (props){
                 
                 />
                 <label htmlFor="HDMI">HDMI</label>
-                <br />
+                
                 <input
                 type="checkbox"
                 id="MicroHDMI"
@@ -69,7 +69,7 @@ export default function Connect (props){
 
                 />
                 <label htmlFor="MicroHDMI">Micro-HDMI</label>
-                <br />
+                
                 <input
                 type="checkbox"
                 id="MicroUSB"
@@ -77,7 +77,7 @@ export default function Connect (props){
   
                 />
                 <label htmlFor="MicroUSB">Micro-USB</label>
-                <br />
+                
                 <input
                 type="checkbox"
                 id="MiniUSB"
@@ -93,7 +93,7 @@ export default function Connect (props){
      
                 />
                 <label htmlFor="USB1.0/1.1">USB 1.0/1.1</label>
-                <br />
+                
                 <input
                 type="checkbox"
                 id="USB2"
@@ -101,7 +101,7 @@ export default function Connect (props){
     
                 />
                 <label htmlFor="USB2">USB 2.0</label>
-                <br />
+                
                 <input
                 type="checkbox"
                 id="USB3"
@@ -109,7 +109,7 @@ export default function Connect (props){
             
                 />
                 <label htmlFor="USB3">USB 3.0</label>
-                <br />
+                
                 <input
                 type="checkbox"
                 id="USB3.1"
@@ -117,7 +117,7 @@ export default function Connect (props){
          
                 />
                 <label htmlFor="USB3.1">USB 3.1</label>
-                <br />
+                
                 <input
                 type="checkbox"
                 id="USB3.2"
@@ -133,7 +133,7 @@ export default function Connect (props){
            
                 />
                 <label htmlFor="usbC">USB-C</label>
-                <br />
+                
                 <input
                 type="checkbox"
                 id="SD"
@@ -141,7 +141,7 @@ export default function Connect (props){
            
                 />
                 <label htmlFor="SD">SD Card Slot</label>
-                <br />
+                
                 <input
                 type="checkbox"
                 id="MicroSD"
@@ -149,7 +149,7 @@ export default function Connect (props){
              
                 />
                 <label htmlFor="MicroSD">MicroSD Card Slot</label>
-                <br />
+                
             </fieldset>
     
     );

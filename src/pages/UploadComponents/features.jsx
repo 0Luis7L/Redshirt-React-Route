@@ -37,7 +37,7 @@ export default function Features (props){
                 value="10/100 Lan card"
                 />
                 <label htmlFor="LanCard">10/100 Lan card</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -47,7 +47,7 @@ export default function Features (props){
                 value="3dCamera"
                 />
                 <label htmlFor="3dCamera">3d camera</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -57,7 +57,7 @@ export default function Features (props){
                 value="5g"
                 />
                 <label htmlFor="5g">5g</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -77,7 +77,7 @@ export default function Features (props){
                 value="Bluetooth"
                 />
                 <label htmlFor="Bluetooth">Bluetooth</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -87,7 +87,7 @@ export default function Features (props){
                 value="Mic"
                 />
                 <label htmlFor="Mic">Built-in Microphone</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -107,7 +107,7 @@ export default function Features (props){
                 value="Convertible 2-in-1 Laptop/Tablet"
                 />
                 <label htmlFor="2in1">Convertible 2-in-1 Laptop/Tablet</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -127,7 +127,7 @@ export default function Features (props){
                 value="Force Touch Trackpad"
                 />
                 <label htmlFor="ForceTouchTrackpad">Force Touch Trackpad</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -137,7 +137,7 @@ export default function Features (props){
                 value="HSDPA"
                 />
                 <label htmlFor="HSDPA">HSDPA</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -147,7 +147,7 @@ export default function Features (props){
                 value="LTE"
                 />
                 <label htmlFor="LTE">LTE</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -167,7 +167,7 @@ export default function Features (props){
                 value="Optane Memory"
                 />
                 <label htmlFor="OptaneMemory">Optane Memory</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -177,7 +177,7 @@ export default function Features (props){
                 value="Optical Drive"
                 />
                 <label htmlFor="OpticalDrive">Optical Drive</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -187,7 +187,7 @@ export default function Features (props){
                 value="Rugged"
                 />
                 <label htmlFor="Rugged">Rugged</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -197,7 +197,7 @@ export default function Features (props){
                 value="Stylus"
                 />
                 <label htmlFor="Stylus">Stylus</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -216,7 +216,7 @@ export default function Features (props){
                 value="Touch ID"
                 />
                 <label htmlFor="TouchID">Touch ID</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -226,7 +226,7 @@ export default function Features (props){
                 value="Touchscreen"
                 />
                 <label htmlFor="Touchscreen">Touchscreen</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -235,8 +235,8 @@ export default function Features (props){
          
                 value="Virtual Reality Ready"
                 />
-                <label htmlFor="vrReady">Virtual Reality Ready</label>
-                <br />
+                <label htmlFor="vrReady">VR Ready</label>
+                
 
                 <input
                 type="checkbox"
@@ -246,7 +246,7 @@ export default function Features (props){
                 value="Widescreen Display"
                 />
                 <label htmlFor="Widescreen">Widescreen Display</label>
-                <br />
+                
 
                 <input
                 type="checkbox"
@@ -256,7 +256,7 @@ export default function Features (props){
                 value="Wi-Fi"
                 />
                 <label htmlFor="WiFi">Wi-Fi</label>
-                <br />
+                
 
             </fieldset>
     

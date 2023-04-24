@@ -124,8 +124,7 @@ function LaptopDetails (){
       <>
         { !itemPosted ?       
         <div className="Upload-go">
-         <h1>Update Laptop</h1>
-         <p>Provide laptop details below:</p>
+         <h1>Provide laptop details below:</h1>
          <Form  onSubmit={ handleLaptopSubmit }>
           
          <Detail onHandle={handleChange} laptop={curr_laptop} customChanged={handleCustomChange} isCustom={custom}/>
@@ -145,7 +144,9 @@ function LaptopDetails (){
           <SimilarPost sku={ curr_sku } SearchComplete={handleSimilarPostSearchComplete} ></SimilarPost>
           </div>
           <br />
-          <button className='submit' >Submit</button>
+          <div className="submit-btn">
+            <button className='submit' >Submit</button>
+          </div>
          </Form>
       
         </div>  :

@@ -1,7 +1,7 @@
 export default function Type (props){
     return (
-        <div className="type">
-            <fieldset>
+        <div>
+            <fieldset className="type">
             <legend>What type of PC?</legend>
             <input 
                 type="radio" 

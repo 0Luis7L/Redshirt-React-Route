@@ -1,7 +1,7 @@
 export default function Color (props){
     return (
         <div className='color'>
-            <label htmlFor="color">Select A Color?</label>
+            <label className='color'htmlFor="color">Select A Color?</label>
             <br />
             <select 
             id="color"
@@ -9,6 +9,7 @@ export default function Color (props){
             value={props.value}
             onChange={props.onHandle}
             >
+                <option value="">-- Chose A Color --</option>
                 <option value="Beige">Beige</option>
                 <option value="Black">Black</option>
                 <option value="Blue">Blue</option>

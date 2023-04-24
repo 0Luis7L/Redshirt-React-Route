@@ -55,7 +55,7 @@ export default function PictureComponent(props){
     
      
       return(
-          <fieldset>
+          <fieldset className='uploadImg'>
             <legend>Upload Images</legend>
               
               <p>{ apiResponse } </p>

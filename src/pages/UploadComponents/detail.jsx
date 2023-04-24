@@ -68,7 +68,10 @@ export default function Detail (props) {
             value={props.laptop.os}
             />
             <input 
-            type="text"
+            type="number" 
+            min="0.00" 
+            max="90000.00" 
+            step="0.01" 
             placeholder="Price"
             name="price"
             onChange={props.onHandle}
@@ -83,13 +86,16 @@ export default function Detail (props) {
             />
             
             <input 
+            className="custom"
             type="checkbox"
             placeholder="custom"
             name="custom"
             onChange={props.customChanged}
             value="custom"
             checked={ props.isCustom }
+            id="custom"
             />
+            <label htmlFor="custom">Custom</label>
             
             <textarea 
             type="text"
