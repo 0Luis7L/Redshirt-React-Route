@@ -7,6 +7,7 @@ import Connect from './UploadComponents/connectivity'
 import Type from './UploadComponents/type'
 import PictureComponent from './UploadComponents/PictureComponent'
 import SimilarPost from './UploadComponents/SimilarPost';
+import Price from './UploadComponents/Price';
 
 
 import { useParams } from "react-router-dom";
@@ -35,13 +36,13 @@ function LaptopDetails (){
    const [ itemPosted, setItemPosted] = useState(false);
     
     function handleChange(event){
-      const {name, value, type, checked} = event.target
+    /*  const {name, value, type, checked} = event.target
       setData(prevData => {
         return {
           ...prevData,
           [name]: type === "checkbox" ? checked : value
         }
-      })
+      })  */
     }
 
     // function for debugging
@@ -76,7 +77,7 @@ function LaptopDetails (){
       showLaptop();
     }
     function handleTypeChange(e){
-      curr_laptop = e.target.value;
+      curr_laptop.type = e.target.value;
       
       showLaptop();
     }
@@ -85,6 +86,14 @@ function LaptopDetails (){
   function handleSimilarPostSearchComplete( found ){
       
       setItemFound(found);
+  }
+
+  function handlePriceChange( price){
+    // set the price of the curr_laptop to 
+    // what the control says
+    curr_laptop.price = price;
+    showLaptop();
+
   }
 
 
@@ -129,12 +138,17 @@ function LaptopDetails (){
           
          <Detail onHandle={handleChange} laptop={curr_laptop} customChanged={handleCustomChange} isCustom={custom}/>
 
-        { !itemFound || custom ?  (
+        { !itemFound || custom ?  ( 
          <><Color onHandle={handleColorChange} /><div className='connectivity--features'>
               <Connect onHandle={handleConnectChange} />
 
               <Features onHandle={handleFeatureChange} />
-            </div><Type onHandle={handleTypeChange} /></>
+            </div><Type onHandle={handleTypeChange} />
+            <div>
+              <Price onChange={handlePriceChange} ></Price>
+            </div>
+            </>
+            
         ):<></>}
           <div className="pic">
           <PictureComponent sku={ curr_sku } ></PictureComponent>
