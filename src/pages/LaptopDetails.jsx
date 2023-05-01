@@ -139,14 +139,17 @@ function LaptopDetails (){
          <Detail onHandle={handleChange} laptop={curr_laptop} customChanged={handleCustomChange} isCustom={custom}/>
 
         { !itemFound || custom ?  ( 
-         <><Color onHandle={handleColorChange} /><div className='connectivity--features'>
-              <Connect onHandle={handleConnectChange} />
-
-              <Features onHandle={handleFeatureChange} />
-            </div><Type onHandle={handleTypeChange} />
-            <div>
-              <Price onChange={handlePriceChange} ></Price>
-            </div>
+         <>
+          <div className="color--price">
+            <Color onHandle={handleColorChange} />
+            <Price onChange={handlePriceChange} />
+          </div>
+          <div className='connectivity--features'>
+            <Connect onHandle={handleConnectChange} />
+            <Features onHandle={handleFeatureChange} />
+          </div>
+           <Type onHandle={handleTypeChange} />
+              
             </>
             
         ):<></>}

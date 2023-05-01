@@ -18,10 +18,11 @@ export default  function Price(props) {
     }
 
     return (
-        <fieldset className="type">
-        <legend>Price</legend>
-        <input type="number" min="1" step="any" value={price} onInput={e => updatePrice(e.target.value)}/>
-        </fieldset>
+        <div className="price">
+            <label className="price-label">Price $</label>
+            <br />
+            <input type="number" min="1" step="any" value={price} onInput={e => updatePrice(e.target.value)}/>
+        </div>
     )
 
 

@@ -67,7 +67,7 @@ function App() {
   return (
     <div>
       <form action="">
-        <Detail onHandle={handleChange} laptop={laptops[0]}/>
+      <Detail onHandle={handleChange} laptop={laptops[0]}/>
         <Color onHandle={handleColorChange} />
         <Connect onHandle={handleConnectChange} />
         <Features onHandle={handleFeatureChange} />

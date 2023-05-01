@@ -1,7 +1,7 @@
 export default function Color (props){
     return (
         <div className='color'>
-            <label className='color'htmlFor="color">Select A Color?</label>
+            <label className="color--label" htmlFor="color">Select A Color?</label>
             <br />
             <select 
             id="color"

@@ -58,14 +58,25 @@ button {
 .connectivity--features {
     display: flex;
 }
+.color--price {
+  display: flex;
+  justify-content: space-evenly;
+}
 .custom {
-  padding-left: 20px;
+  display: inline;
+  padding-left: 50px;
 }
 .color {
   display: flex;
   font-size: large;
   padding-top: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
+}
+.price {
+  display: flex;
+  font-size: large;
+  padding-top: 5px;
+  padding-bottom: 10px;
 }
 .connectivity {
   background-color: var(--tertiary);
@@ -93,6 +104,11 @@ label, fieldset{
 }
 legend {
   font-size: large;
+  letter-spacing: 2px;
+}
+.color--label, .price-label, .custom--label {
+  background-color: var(--tertiary);
+  padding: 5px 15px 5px 15px;
   letter-spacing: 2px;
 }
 /*Login page */
@@ -175,7 +191,7 @@ textarea {
   padding-right: 78%;
 }
 .submit {
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 10px 30px 10px 30px;
   text-decoration: none;
   border: none;
@@ -190,6 +206,81 @@ textarea {
 .submit-btn {
   display: flex;
   justify-content: center;
+}
+/*card */
+* {
+  box-sizing: border-box;
+}
+.posted-title {
+  margin-bottom: 50px;
+}
+.contacts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.contact-card {
+  flex-basis: 225px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 13px;
+  padding-bottom: 20px;
+  background-color: whitesmoke;
+}
+.contact-card > img {
+  width: 100%;
+  height: auto;
+  align-self: center;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.contact-card > h3 {
+  font-weight: 700;
+  font-size: 18px;
+}
+.info {
+  display: flex;
+  align-items: center;
+}
+.info-group > img {
+  height: 11px;
+  margin-right: 8px;
+}
+.info > p {
+  margin-block: 3px;
+  font-size: 14px;
+  color: var(--secondary);
+}
+.info > p > a {
+  color: var(--secondary);
+}
+.info > p > a:hover {
+  color: var(--primary);
+  cursor: pointer;
+}
+
+/*401 page */
+.lock-img {
+  width: 500px;
+  display: inline-block;
+}
+.card-401 {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url(./images/qwrttt.jpg) ;
+  background-position:center;
+  background-size: cover;
+  width:1000px;
+  height:650px;
+  box-shadow: 20px 20px 50px black;
+}
+.message-401 {
+  margin-left: 50px;
 }
 /* 
 
