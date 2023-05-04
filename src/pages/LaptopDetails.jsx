@@ -1,4 +1,5 @@
-import {laptop_list, CreateItem, ReviseItem} from './UploadComponents/rs-api-mocks'
+import {laptop_list} from './UploadComponents/rs-api-mocks'
+import { CreateItem, ReviseItem } from './rs-api-endpoints';
 import { Form, redirect } from "react-router-dom";
 import Color from './UploadComponents/color'
 import Detail from './UploadComponents/detail'
@@ -10,20 +11,24 @@ import SimilarPost from './UploadComponents/SimilarPost';
 import Price from './UploadComponents/Price';
 
 
+
 import { useParams } from "react-router-dom";
 import { useState } from 'react'
 import PostedItem from './UploadComponents/PostedItem';
+import useLaptops from '../hooks/useLaptops';
+import LaptopsContext from '../context/LaptopProvider';
 
 
 // The page for posting a specific laptop
 function LaptopDetails (){
 
+  const { laptops } = useLaptops();
     // get the index of the laptop from the 
     const params = useParams()
 
      console.log(params.idx)
     // get the current laptop by idx
-    const curr_laptop = laptop_list[params.idx];
+    const curr_laptop = laptops[params.idx];
 
     // state variable set to custom flag for laptop
     const [ custom , setCustom ] = useState( curr_laptop.custom)
@@ -130,6 +135,7 @@ function LaptopDetails (){
 
 
     return (
+   
       <>
         { !itemPosted ?       
         <div className="Upload-go">

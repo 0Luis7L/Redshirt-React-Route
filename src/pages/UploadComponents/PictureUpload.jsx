@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { AddPic } from './rs-api-mocks';
+// import { AddPic } from './rs-api-mocks';
+import { callAddPic } from '../rs-api-endpoints';
 
 function PictureUpload(props){
 	
@@ -20,9 +21,13 @@ function PictureUpload(props){
 
 	// api template function
 	async function addPicHandler() {
+		if(!isFilePicked){
+			alert("Please select a file before uploading.");
+			return;
+		}
 		// just output the file name for debugging
 		console.log( selectedFile );
-		const jsonData = await AddPic();
+		const jsonData = await callAddPic(selectedFile,props.sku);
   
 		// call passed handler
 		props.uploadComplete(jsonData);

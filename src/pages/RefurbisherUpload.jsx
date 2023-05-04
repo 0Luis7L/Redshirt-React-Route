@@ -1,4 +1,4 @@
-import { UploadCsv } from "./UploadComponents/rs-api-mocks"
+import { UploadCsv } from "./rs-api-endpoints"
 import { useState } from "react";
 
 export default function RefurbisherUpload(){

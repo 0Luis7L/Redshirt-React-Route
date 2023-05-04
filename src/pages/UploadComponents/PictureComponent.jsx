@@ -1,6 +1,6 @@
 import { useState, useEffect} from 'react'
 import PictureUpload from './PictureUpload';
-import { GetPics } from './rs-api-mocks'
+import { GetPics } from '../rs-api-endpoints'
 
 
 export default function PictureComponent(props){

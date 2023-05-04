@@ -1,6 +1,7 @@
 import { useState, useEffect} from 'react'
-import { GetReviseable } from './rs-api-mocks'
+// import { GetReviseable } from './rs-api-mocks'
 
+import { GetReviseable } from '../rs-api-endpoints'
 
 export default function SimilarPost ( props ){
     /*
@@ -21,6 +22,8 @@ export default function SimilarPost ( props ){
        
        
       const response = await GetReviseable(props.sku);
+      // check if no item found
+        
       return response;
 
     };
