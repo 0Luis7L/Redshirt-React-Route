@@ -1,5 +1,8 @@
-export default function Features (props){
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMicrochip } from '@fortawesome/free-solid-svg-icons'
 
+export default function Features (props){
+    const FeatureIcon = <FontAwesomeIcon icon={faMicrochip} />
     //handler for onChange 
     function featuresChangeHandler(){
         // find all the input checkboxes that are currently selected (features)
@@ -27,7 +30,7 @@ export default function Features (props){
     return (
     
             <fieldset onChange={featuresChangeHandler} className='features'>
-                <legend>What are the features of the device?</legend>
+                <legend>What are the features of the device? {FeatureIcon}</legend>
 
                 <input
                 type="checkbox"

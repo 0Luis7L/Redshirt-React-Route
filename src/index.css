@@ -119,17 +119,26 @@ legend {
   padding: 40px 30px 40px 30px;
   display: flex;
   justify-content: center;
+  box-shadow: 20px 20px 50px black;
 }
 .login-heading {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 5px;
   margin: 5px;
 }
 .login-inputs {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.email, .password {
+  display: flex;
+}
+.login-icon {
+  margin: 10px;
 }
 .loginBTN {
   margin-top: 50px;
@@ -269,9 +278,10 @@ textarea {
 }
 .card-401 {
   margin-top: 25px;
+  margin-left: 50px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding-top: 120px;
   background-image: url(./images/qwrttt.jpg) ;
   background-position:center;
   background-size: cover;
@@ -280,7 +290,7 @@ textarea {
   box-shadow: 20px 20px 50px black;
 }
 .message-401 {
-  margin-left: 50px;
+  margin-left: 100px;
 }
 /* 
 

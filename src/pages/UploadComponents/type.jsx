@@ -1,8 +1,13 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
+
 export default function Type (props){
+    const TypeIcon = <FontAwesomeIcon icon={faPowerOff} />
+
     return (
         <div>
             <fieldset className="type">
-            <legend>What type of PC?</legend>
+            <legend>What type of PC? {TypeIcon}</legend>
             <input 
                 type="radio" 
                 id="casual" 

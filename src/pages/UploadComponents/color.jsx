@@ -1,7 +1,14 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBrush } from '@fortawesome/free-solid-svg-icons'
+
 export default function Color (props){
+
+    const BrushIcon = <FontAwesomeIcon icon={faBrush} style={{paddingRight: 10 + 'px'}} />
+    
+    
     return (
         <div className='color'>
-            <label className="color--label" htmlFor="color">Select A Color?</label>
+            <label className="color--label" htmlFor="color"> {BrushIcon} Select A Color?</label>
             <br />
             <select 
             id="color"

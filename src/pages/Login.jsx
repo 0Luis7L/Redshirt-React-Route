@@ -2,6 +2,8 @@ import useAuth from '../hooks/useAuth'
 import { useState} from 'react'
 import { CallLogin } from './UploadComponents/rs-api-mocks'
 import { Navigate, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faUnlockKeyhole, faIdBadge } from '@fortawesome/free-solid-svg-icons'
 
 // All this should be new!!!
 export default function Login(){
@@ -63,13 +65,21 @@ export default function Login(){
     return ( 
         <div className="login-card">
       <form onSubmit={ formSubmit }>
-      <div>
-          <h1 className="login-heading">Welcome</h1>
+      <div className="login-heading">
+          <h1 className="login-heading" style={{fontSize: 50 + 'px'}}>Welcome</h1>
           <h2 className="login-heading">Login</h2>
+          <FontAwesomeIcon icon={faIdBadge} className="login-heading fa-4x" style={{marginTop: 10 + 'px'}} />
       </div>
       <div className="login-inputs">
-          <input type="text" onChange={handleUserChange} placeholder="Email"/>
-          <input type="password" onChange={ handlePwdChange } placeholder="Password" />
+        <div className="email">
+            <FontAwesomeIcon icon={faEnvelope} className='login-icon' />
+            <input type="text" onChange={handleUserChange} placeholder="Email"/>
+        </div>
+        <div className="password">
+            <FontAwesomeIcon icon={faUnlockKeyhole} className='login-icon' />
+            <input type="password" onChange={ handlePwdChange } placeholder="Password" style={{marginLeft: 7 + 'px'}} />
+        </div>
+        
       </div>
       <div className="loginBTN">
           <button className="BTNlogin" onClick={handleLogin} type='submit'>Login</button>
