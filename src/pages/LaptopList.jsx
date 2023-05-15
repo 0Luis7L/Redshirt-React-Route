@@ -61,10 +61,19 @@ export default function LaptopsList( ) {
           <div>
             <h1>Laptop List</h1>
             <p style={{marginTop: ('20px')}}>Here are the listed laptops that need to be checked: <FontAwesomeIcon icon={faSquareCheck} /></p>
-            <div className="Laptops">
-            <>{ laptopList }</>
-            </div>
+              <div className="List" alt="Blue and green background" href="https://www.vecteezy.com/free-vector/technology">
+                <div className="Laptops">
+                  <>{ laptopList }</>
+                </div>
+              </div>
+              <div className="footer">
+                <a class="previous" href="#">&laquo; Previous</a>
+                <a class="next" href="#">Next &raquo;</a>
+              </div>
           </div>
          );
 
 };
+/*
+<a href="https://www.vecteezy.com/free-vector/technology">Technology Vectors by Vecteezy</a>
+*/

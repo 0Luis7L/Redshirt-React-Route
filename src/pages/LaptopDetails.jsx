@@ -128,7 +128,7 @@ function LaptopDetails (){
 
    }
    //const curr_sku = curr_laptop.id something is wrong with the id. retunrs as id undifined?
-  const curr_sku = curr_laptop;
+  const curr_sku = curr_laptop.id;
    
 
     return (
@@ -137,40 +137,39 @@ function LaptopDetails (){
         <div className="Upload-go">
          <h1>Provide laptop details below: <FontAwesomeIcon icon={faCircleInfo} size="2xs" style={{paddingTop: 20 + "px"}} /></h1>
          <Form  onSubmit={ handleLaptopSubmit }>
-          
-         <Detail onHandle={handleChange} laptop={curr_laptop} customChanged={handleCustomChange} isCustom={custom}/>
 
-        { !itemFound || custom ?  ( 
-         <>
-          <div className="color--price">
-            <Color onHandle={handleColorChange} />
-            <Price onChange={handlePriceChange} />
-          </div>
-          <div className='connectivity--features'>
-            <Connect onHandle={handleConnectChange} />
-            <Features onHandle={handleFeatureChange} />
-          </div>
-           <Type onHandle={handleTypeChange} />
-              
+          <div className="Input-Page" alt="cyper circuit board " href="https://www.vecteezy.com/free-vector/hexagon">
+            <Detail onHandle={handleChange} laptop={curr_laptop} customChanged={handleCustomChange} isCustom={custom}/>
+            { !itemFound || custom ?  ( 
+            <>
+              <div className="color--price">
+                <Color onHandle={handleColorChange} />
+                <Price onChange={handlePriceChange} />
+              </div>
+              <div className='connectivity--features'>
+                <Connect onHandle={handleConnectChange} />
+                <Features onHandle={handleFeatureChange} />
+              </div>
+              <Type onHandle={handleTypeChange} />
             </>
-            
-        ):<></>}
-          <div className="pic">
-          <PictureComponent sku={ curr_sku } ></PictureComponent>
-       
+  
+              ):<></>}
+              <div className="pic">
+                <PictureComponent sku={ curr_sku } ></PictureComponent>
+              </div>
+              <div className="pic">
+                <SimilarPost sku={ curr_sku } SearchComplete={handleSimilarPostSearchComplete} ></SimilarPost>
+              </div>
+              <br />
+              <div className="submit-btn">
+                <button className='submit' >Submit {ArrowIcon}</button>
+              </div>
           </div>
-          <div className="pic">
-          <SimilarPost sku={ curr_sku } SearchComplete={handleSimilarPostSearchComplete} ></SimilarPost>
-          </div>
-          <br />
-          <div className="submit-btn">
-            <button className='submit' >Submit {ArrowIcon}</button>
-          </div>
+
          </Form>
-      
         </div>  :
         <PostedItem item={itemPosted} ></PostedItem>  }
-      
+        
       </>
         
       )
@@ -183,3 +182,6 @@ function LaptopDetails (){
 
 
 export default LaptopDetails
+/*
+<a href="https://www.vecteezy.com/free-vector/hexagon">Hexagon Vectors by Vecteezy</a>
+*/

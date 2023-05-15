@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 :root {
-    --primary: green;
+    --primary: #588250;
     --secondary: #2b3452;
-    --tertiary: rgba(0, 0, 0, .25);
+    --tertiary: rgba(0, 0, 0, .60);
+    --quaternary: rgba(255,255,255, 0.4);
+    --quinary: #b3ed4e;
 }
 body{
     margin: 0px;
@@ -98,7 +100,9 @@ button {
 .similarPost {
   background-color: var(--tertiary);
 }
-
+.refurbish {
+  background-color: var(--tertiary);
+}
 label, fieldset{
   margin-right: 10px;
 }
@@ -111,7 +115,15 @@ legend {
   padding: 5px 15px 5px 15px;
   letter-spacing: 2px;
 }
+
 /*Login page */
+.Login {
+  background: url(./images/Blue-Green-Tech.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 10px;
+  padding-bottom: 70px;
+}
 .login-card {
   background: var(--tertiary);
   border-radius: 4px;
@@ -121,7 +133,7 @@ legend {
   justify-content: center;
   box-shadow: 20px 20px 50px black;
 }
-.login-heading {
+.login-heading { 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -169,19 +181,28 @@ input[type="password"], input[type="email"] {
 
 
 /* Laptop List*/
+.List {
+  background: url(./images/blue-green-background.jpg);
+  background-size: cover;
+  padding: 10px;
+  padding-bottom: 100%;
+  box-shadow: 20px 20px 50px black;
+}
 .Laptops {
   margin-top: 50px;
 }
 .Laptop > a {
   display: block;
   text-decoration: none;
-  background-color: var(--tertiary);
+  background-color: var(--quaternary);
+  box-shadow: 2px 2px 10px black;
+  
   padding: 20px;
   margin: 20px;
   border-radius: 4px;
 }
 .Laptop a:hover {
-  color: var(--primary);
+  color: var(--quinary);
 }
 /*update Post */
 input[type="text"] {
@@ -216,7 +237,14 @@ textarea {
   display: flex;
   justify-content: center;
 }
-/*card */
+/*Input-Page*/
+.Input-Page {
+  background: url(./images/blue-green-background.jpg);
+  background-position:center;
+  background-size: cover;
+  box-shadow: 20px 20px 50px black;
+}
+/*Posted Page--Cards */
 * {
   box-sizing: border-box;
 }
@@ -228,27 +256,28 @@ textarea {
   justify-content: center;
   flex-wrap: wrap;
   gap: 40px;
+  background: url(./images/hexagon-posted.jpg);
+  background-position:center;
+  background-size: cover;
+  box-shadow: 20px 20px 50px black;
+  padding: 20px;
+  padding-bottom: 100%;
 }
 .contact-card {
   flex-basis: 225px;
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 4px 10px black;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   padding: 13px;
   padding-bottom: 20px;
-  background-color: whitesmoke;
-}
-.contact-card > img {
-  width: 100%;
-  height: auto;
-  align-self: center;
-  border-radius: 5px;
-  object-fit: cover;
+  background-color: var(--quaternary);
+  border: solid 1px white;
 }
 .contact-card > h3 {
   font-weight: 700;
   font-size: 18px;
+  justify-content: center;
 }
 .info {
   display: flex;
@@ -261,13 +290,13 @@ textarea {
 .info > p {
   margin-block: 3px;
   font-size: 14px;
-  color: var(--secondary);
+  
 }
 .info > p > a {
-  color: var(--secondary);
+  font-size: small;
 }
 .info > p > a:hover {
-  color: var(--primary);
+  color: var(--quinary);
   cursor: pointer;
 }
 
@@ -291,6 +320,78 @@ textarea {
 }
 .message-401 {
   margin-left: 100px;
+}
+
+/*Refurbishe- Page*/
+.Refurbished {
+  background: url(./images/blue-hexagon.jpg);
+  background-position:center;
+  background-size: cover;
+  box-shadow: 2px 2px 10px black;
+  padding: 10px;
+  padding-bottom: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.refurbish{
+  margin-top: 100px;
+  padding: 20px;
+}
+input[type="text"],[type="password"] {
+	background-color: rgba(255,255,255, 0.7);
+	color: black;
+  border: solid 1px white;
+}
+input::placeholder {
+  color: var(--primary);
+}
+input[type="button"] {
+  border-radius: 3px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  border: none;
+  font-family: poppins;
+  font-weight: bold;
+  font-size: medium;
+  letter-spacing: 2px;
+}
+input::file-selector-button {
+  border-radius: 3px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  border: none;
+  font-family: poppins;
+  font-weight: bold;
+  font-size: medium;
+  letter-spacing: 2px;
+  color: var(--primary);
+  margin-right: 10px;
+}
+/*previous next buttons*/
+.footer {
+  position: fixed;
+  bottom: 0;
+  padding-left: 52%;
+}
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+a:hover {
+  background-color: var(--primary);
+  color: var(--quinary);
+}
+.previous {
+  background-color: var(--quaternary);
+  color: black;
+  
+}
+.next {
+  background-color: var(--quinary);
+  color: black;
+  
 }
 /* 
 
