@@ -57,6 +57,9 @@ button {
     margin: 6px;
     border-radius: 4px;
 }
+.details {
+  margin: 5px 0px 5px 15px;
+}
 .connectivity--features {
     display: flex;
 }
@@ -96,6 +99,9 @@ button {
 }
 .uploadImg {
   background-color: var(--tertiary);
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
 }
 .similarPost {
   background-color: var(--tertiary);
@@ -178,6 +184,19 @@ input[type="password"], input[type="email"] {
   border-radius: 5px;
   display: block;
 }
+input[type="number"] {
+  background-color: var(--secondary);
+  color: white;
+  text-indent: 10px;
+  border-radius: 5px;
+  width: 100px;
+}
+select {
+  background-color: var(--secondary);
+  color: white;
+  border-radius: 5px;
+}
+
 
 
 /* Laptop List*/

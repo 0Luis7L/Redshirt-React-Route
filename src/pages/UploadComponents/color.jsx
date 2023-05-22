@@ -11,6 +11,7 @@ export default function Color (props){
             <label className="color--label" htmlFor="color"> {BrushIcon} Select A Color?</label>
             <br />
             <select 
+            data-testid="color"
             id="color"
             name="color"
             value={props.value}

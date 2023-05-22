@@ -23,7 +23,13 @@ export default  function Price(props) {
         <div className="price">
             <label className="price-label">{MoneyIcon} Price $</label>
             <br />
-            <input type="number" min="1" step="any" value={price} onInput={e => updatePrice(e.target.value)}/>
+            <input 
+                data-testid="Price"
+                type="number" 
+                min="1" step="any" 
+                value={price} 
+                onInput={e => updatePrice(e.target.value)}
+            />
         </div>
     )
 

@@ -127,7 +127,7 @@ function LaptopDetails (){
 
 
    }
-   //const curr_sku = curr_laptop.id something is wrong with the id. retunrs as id undifined?
+   //const curr_sku = curr_laptop.id something is wrong with the id. retuns as id undifined?
   const curr_sku = curr_laptop.id;
    
 
