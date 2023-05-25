@@ -128,3 +128,14 @@ export const UploadCsv = async ( csv) => {
 
 
 }
+
+export const ToggleCustom = async( id ) =>{
+
+
+    const chg_custom_url = "https://localhost:7087/api/Laptop/changecustom/" + id;
+
+    const resp = await fetch(chg_custom_url,
+    {method:'POST'});
+
+    
+}

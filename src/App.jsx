@@ -15,6 +15,7 @@ import Unauthorized from './pages/Unauthorized'
 // Layouts
 import RequireAuth from './components/RequireAuth'
 import RootLayout from './layouts/RootLayout'
+import LaptopsContext from './context/LaptopProvider'
 
 
 
@@ -70,7 +71,9 @@ function App() {
   
 
   return (
+  
     <RouterProvider router={router} />
+  
   )
 }
 

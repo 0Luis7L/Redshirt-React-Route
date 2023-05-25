@@ -1,5 +1,5 @@
 import {laptop_list} from './UploadComponents/rs-api-mocks'
-import { CreateItem, ReviseItem } from './rs-api-endpoints';
+import { CreateItem, ReviseItem, ToggleCustom } from './rs-api-endpoints';
 import { Form, redirect } from "react-router-dom";
 import Color from './UploadComponents/color'
 import Detail from './UploadComponents/detail'
@@ -9,7 +9,6 @@ import Type from './UploadComponents/type'
 import PictureComponent from './UploadComponents/PictureComponent'
 import SimilarPost from './UploadComponents/SimilarPost';
 import Price from './UploadComponents/Price';
-
 
 
 import { useParams } from "react-router-dom";
@@ -104,7 +103,8 @@ function LaptopDetails (){
 
    // handler passed to detail component 
    // handles change of custom / non-custom
-   function handleCustomChange( e){
+   const  handleCustomChange = async( e) =>{
+      ToggleCustom(curr_laptop.id);
       curr_laptop.custom = e.target.checked;
       setCustom(curr_laptop.custom);
       console.log("current laptop custom:" , curr_laptop.custom);

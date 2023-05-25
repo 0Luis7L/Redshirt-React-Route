@@ -116,11 +116,6 @@ export const  GetUnlisted =  async () =>{
   
   
   
-  
-  
-  
-  
-  
   //export const fetchData = async (args) => {
   
   // check if laptop is reviseable
