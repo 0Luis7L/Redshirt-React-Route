@@ -1,10 +1,14 @@
 
+function getToken(){
+  return localStorage.getItem("rs-token");
+}
 
 // post a new laptop 
 // HOPEFULLY takes laptop object as body
 // returns an ebay item with itemid and some other details
 export async function CreateItem( laptop){
 
+    const auth_token = "Bearer " + getToken();
     // dev server uri
     const uri = 'https://localhost:7087/api/Laptop/createitem';
     console.log("inside createitem (real)");
@@ -12,7 +16,7 @@ export async function CreateItem( laptop){
         method: 'POST',
         body: JSON.stringify(laptop),
         headers: {
-              
+      'Authorization': auth_token,
 			'Content-Type': 'application/json'
 			} 
     });
@@ -31,10 +35,12 @@ export async function CreateItem( laptop){
 // just expects an id and returns the item object that was found previously
 export async function ReviseItem( id){
 
+  const auth_token = "Bearer " + getToken();
     const uri = "https://localhost:7087/api/Laptop/revise/" + id;
 
     const resp = await fetch(uri,{
-        method:'POST'
+        method:'POST',
+        headers: { 'Authorization': auth_token}
     });
     // get the item
     const item = await resp.json();
@@ -46,7 +52,7 @@ export async function ReviseItem( id){
 // add a new pic
 export const callAddPic = async (selectedFile,sku) => {
     const formData = new FormData();
-
+    const auth_token = "Bearer " + getToken();
     formData.append('File', selectedFile);
     const add_pic_url = "https://localhost:7087/addpic/" + sku ;
     const resp = await 	fetch(
@@ -55,6 +61,7 @@ export const callAddPic = async (selectedFile,sku) => {
             method: 'POST',
          //   mode:'no-cors',
             body: formData,
+            headers: { 'Authorization': auth_token}
         }
     );
 
@@ -66,10 +73,12 @@ export const callAddPic = async (selectedFile,sku) => {
 
 // get pics
 export const GetPics = async ( sku) => {
-
+  const auth_token = "Bearer " + getToken();
         // todo : set the endpoint with sku appended
         const getpics_url = "https://localhost:7087/api/Laptop/getpics/" + sku;
-      const response = await fetch(getpics_url);
+      const response = await fetch(getpics_url, {
+        headers: { 'Authorization': auth_token}
+      });
       const jsonResponse = await response.json();
       
 
@@ -85,7 +94,10 @@ const getUnlistedurl =  "https://localhost:7087/api/Laptop/getunlisted"
 // laptop object from passed sku
 
 export const callGetUnlisted = async () => {
-    const response = await fetch(getUnlistedurl);
+  const auth_token = "Bearer " + getToken();
+    const response = await fetch(getUnlistedurl, {
+      headers: { 'Authorization': auth_token}
+    });
 
     // just return the response , could be null
     const jsonResponse = await response.json();
@@ -96,10 +108,12 @@ export const callGetUnlisted = async () => {
 
 export const GetReviseable = async (sku) => {
      
-           
+  const auth_token = "Bearer " + getToken();
     // just return the response , could be null
 const getreviseable_url = "https://localhost:7087/api/Laptop/getreviseable/"+ sku;
-      const response =  await fetch(getreviseable_url);
+      const response =  await fetch(getreviseable_url, {
+        headers:{ 'Authorization': auth_token}
+      });
 
   
     const jsonResponse =  response.json();
@@ -111,7 +125,7 @@ const getreviseable_url = "https://localhost:7087/api/Laptop/getreviseable/"+ sk
 // upload a csv , for refurbisher only
 export const UploadCsv = async ( csv) => {
     const formData = new FormData();
-
+    const auth_token = "Bearer " + getToken();
     formData.append('File', csv);
     const add_pic_url = "https://localhost:7087/api/Laptop/uploadcsv";
     const resp = await 	fetch(
@@ -120,6 +134,7 @@ export const UploadCsv = async ( csv) => {
             method: 'POST',
          //   mode:'no-cors',
             body: formData,
+            headers: { 'Authorization': auth_token}
         }
     );
 
@@ -131,11 +146,58 @@ export const UploadCsv = async ( csv) => {
 
 export const ToggleCustom = async( id ) =>{
 
-
+  const auth_token = "Bearer " + getToken();
     const chg_custom_url = "https://localhost:7087/api/Laptop/changecustom/" + id;
 
     const resp = await fetch(chg_custom_url,
-    {method:'POST'});
+    {method:'POST',
+      headers: { 'Authorization': auth_token}});
 
     
+}
+
+
+const TOKEN_ROLES = [
+    { 
+      user: "poster1",
+      token: "289rfoijewoi32u0",
+      roles: [2000]
+    },
+
+    { 
+      user:"refurbisher1",
+      token:"20934r0329uewiofj02u",
+      roles: [3000]
+    } 
+
+  ];
+
+// mock function for logging in returns a token and a role code
+
+export const CallLogin = async ( creds) =>{
+    console.log('inside CallLogin');
+    let token_role = {}
+    // check the creds 
+    // poster
+    console.log("Inside CallLogin")
+    console.log(creds);
+    const login_url = "https://localhost:7087/api/Login/login";
+   const resp =  await fetch(login_url, {
+        method: 'POST',
+        body: JSON.stringify(creds),
+    //    mode: 'no-cors',
+       headers: { 'Content-Type': 'application/json'}
+        
+    });
+    // get the json
+    const data = await resp.json();
+    // check about the roles
+    if( data.role== "refurbisher")
+            data.roles = [3000];
+    else if( data.role == "poster")
+            data.roles = [2000];
+    else
+            data.roles = null;
+    data.role = "";
+    return data;
 }

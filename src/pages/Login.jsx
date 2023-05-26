@@ -1,6 +1,6 @@
 import useAuth from '../hooks/useAuth'
 import { useState} from 'react'
-import { CallLogin } from './UploadComponents/rs-api-mocks'
+import { CallLogin } from './rs-api-endpoints'
 import { Navigate, useNavigate } from 'react-router-dom';
 
 // All this should be new!!!
@@ -28,8 +28,8 @@ export default function Login(){
       
         console.log("inside login");
         // get user name and password
-        const creds = { user: username,
-                        pwd: pwd
+        const creds = { username: username,
+                        password: pwd
 
                         };
         
@@ -44,7 +44,7 @@ export default function Login(){
                         
 
         // to do:  set the  token in localstorage
-
+        localStorage.setItem("rs-token", result.token);
         
         // now based on the role navigate to default page
         if( result.roles[0] == 2000)
