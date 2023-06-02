@@ -1,3 +1,9 @@
+const debug = true;
+let base_url = "https://lgtolr.net/";
+
+if( debug)
+  base_url = "https://localhost:7087/"
+
 
 function getToken(){
   return localStorage.getItem("rs-token");
@@ -10,7 +16,7 @@ export async function CreateItem( laptop){
 
     const auth_token = "Bearer " + getToken();
     // dev server uri
-    const uri = 'https://localhost:7087/api/Laptop/createitem';
+    const uri = base_url + 'api/Laptop/createitem';
     console.log("inside createitem (real)");
     const resp = await fetch( uri, {
         method: 'POST',
@@ -36,7 +42,7 @@ export async function CreateItem( laptop){
 export async function ReviseItem( id){
 
   const auth_token = "Bearer " + getToken();
-    const uri = "https://localhost:7087/api/Laptop/revise/" + id;
+    const uri = base_url + "api/Laptop/revise/" + id;
 
     const resp = await fetch(uri,{
         method:'POST',
@@ -53,20 +59,28 @@ export async function ReviseItem( id){
 export const callAddPic = async (selectedFile,sku) => {
     const formData = new FormData();
     const auth_token = "Bearer " + getToken();
-    formData.append('File', selectedFile);
-    const add_pic_url = "https://localhost:7087/addpic/" + sku ;
+    // append selectedFile as array of files
+    for(const file of selectedFile){
+      console.log(file.name)
+    formData.append('files', file, file.name);
+    }
+
+    
+    console.log("formData:", formData)
+    const add_pic_url = base_url +"api/Laptop/addpic/" + sku ;
     const resp = await 	fetch(
         add_pic_url,
         {
             method: 'POST',
-         //   mode:'no-cors',
+         //  mode:'no-cors',
             body: formData,
             headers: { 'Authorization': auth_token}
         }
     );
 
-    const pic_url = await resp.text();
-    return pic_url
+   const pic_url = await resp.json();
+   
+    return pic_url;
 
 //   return txt;
 };
@@ -75,7 +89,7 @@ export const callAddPic = async (selectedFile,sku) => {
 export const GetPics = async ( sku) => {
   const auth_token = "Bearer " + getToken();
         // todo : set the endpoint with sku appended
-        const getpics_url = "https://localhost:7087/api/Laptop/getpics/" + sku;
+        const getpics_url = base_url + "api/Laptop/getpics/" + sku;
       const response = await fetch(getpics_url, {
         headers: { 'Authorization': auth_token}
       });
@@ -89,7 +103,7 @@ export const GetPics = async ( sku) => {
 
 
 // get unlisted
-const getUnlistedurl =  "https://localhost:7087/api/Laptop/getunlisted"  
+const getUnlistedurl = base_url +  "api/Laptop/getunlisted"  
 // async function to get json of
 // laptop object from passed sku
 
@@ -110,7 +124,7 @@ export const GetReviseable = async (sku) => {
      
   const auth_token = "Bearer " + getToken();
     // just return the response , could be null
-const getreviseable_url = "https://localhost:7087/api/Laptop/getreviseable/"+ sku;
+const getreviseable_url = base_url + "api/Laptop/getreviseable/"+ sku;
       const response =  await fetch(getreviseable_url, {
         headers:{ 'Authorization': auth_token}
       });
@@ -127,7 +141,7 @@ export const UploadCsv = async ( csv) => {
     const formData = new FormData();
     const auth_token = "Bearer " + getToken();
     formData.append('File', csv);
-    const add_pic_url = "https://localhost:7087/api/Laptop/uploadcsv";
+    const add_pic_url = base_url +  "api/Laptop/uploadcsv";
     const resp = await 	fetch(
         add_pic_url,
         {
@@ -147,7 +161,7 @@ export const UploadCsv = async ( csv) => {
 export const ToggleCustom = async( id ) =>{
 
   const auth_token = "Bearer " + getToken();
-    const chg_custom_url = "https://localhost:7087/api/Laptop/changecustom/" + id;
+    const chg_custom_url = base_url + "api/Laptop/changecustom/" + id;
 
     const resp = await fetch(chg_custom_url,
     {method:'POST',
@@ -181,7 +195,7 @@ export const CallLogin = async ( creds) =>{
     // poster
     console.log("Inside CallLogin")
     console.log(creds);
-    const login_url = "https://localhost:7087/api/Login/login";
+    const login_url = base_url + "api/Login/login";
    const resp =  await fetch(login_url, {
         method: 'POST',
         body: JSON.stringify(creds),

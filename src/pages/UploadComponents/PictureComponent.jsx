@@ -18,11 +18,22 @@ export default function PictureComponent(props){
         // get the length of apiResponse
         let next_id = apiResponse.length + 1;
         console.log("next_id:", next_id);
-        const imgList = [...apiResponse, <img key={next_id} src={item} height="75" width="100" /> ]
+        console.log("item:", item)
+        // items should be a list of images on s3
+        // iterate thru
+        let imgList = [...apiResponse];
+        for(let i = 0; i < item.length; i++){
+          console.log(item[i]);
+           imgList = [...imgList, <img key={next_id} src={item[i]} height="75" width="100" /> ]
+          // increment next_id
+          next_id+= 1;
+        }
+        console.log("imgList after:", imgList);
+       
        setApiResponse(imgList);
       // console.log(apiResponse);
       // increment the number of pictures
-      setPicsCount( picsCount +1)
+      setPicsCount( picsCount + item.length)
     }
 
 
