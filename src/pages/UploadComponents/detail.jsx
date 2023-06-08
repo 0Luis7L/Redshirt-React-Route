@@ -1,7 +1,12 @@
 
-export default function Detail (props) {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGear } from '@fortawesome/free-solid-svg-icons'
 
+
+export default function Detail (props) {
+    const CustomIcon = <FontAwesomeIcon icon={faGear} />;
     console.log("custom on load",props.laptop.custom)
+
     return (
         <div className="details">
             <input 
@@ -84,7 +89,7 @@ export default function Detail (props) {
                 checked={ props.isCustom }
                 id="custom"
                 />
-                <label className="custom--label" htmlFor="custom">Custom</label>
+                <label className="custom--label" htmlFor="custom">Custom {CustomIcon}</label>
             </div>
             
             
@@ -94,6 +99,7 @@ export default function Detail (props) {
             name="notes"
             onChange={props.onHandle}
             value={props.laptop.notes}
+            style={{backgroundColor: "rgba(255,255,255, 0.7)", borderColor: "white"}}
             />
         </div>
     )

@@ -1,9 +1,13 @@
 import { useState, useEffect} from 'react'
-// import { GetReviseable } from './rs-api-mocks'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCopy } from '@fortawesome/free-solid-svg-icons'
+
 
 import { GetReviseable } from '../rs-api-endpoints'
 
 export default function SimilarPost ( props ){
+    const PostIcon = <FontAwesomeIcon icon={faCopy} />
     /*
     component is used to determine if a laptop is eligible as a quantity 
     update.  Queries the RedshirtApi and dispalys a link to a similar post if 
@@ -63,7 +67,7 @@ export default function SimilarPost ( props ){
 
     return ( 
             <fieldset className='similarPost'>
-                <legend>Similar Post</legend>
+                <legend>Similar Post {PostIcon}</legend>
                 <a href={ itemFound }> {title } </a>
                  { itemId } 
             </fieldset>)

@@ -1,4 +1,4 @@
-const debug = true;
+const debug = false;
 let base_url = "https://lgtolr.net/";
 
 if( debug)
@@ -32,7 +32,7 @@ export async function CreateItem( laptop){
     // return item
     return item;
 
-
+    
 }
 
 // updates a laptop with the passed id

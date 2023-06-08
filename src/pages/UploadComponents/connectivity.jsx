@@ -1,4 +1,9 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSdCard } from '@fortawesome/free-solid-svg-icons'
+
 export default function Connect (props){
+  const ConnetIcon = <FontAwesomeIcon icon={faSdCard} />
+      
       //handler for onChange 
       function connectivityChangeHandler(){
         // find all the input checkboxes that are currently selected (features)
@@ -26,7 +31,7 @@ export default function Connect (props){
     return (
    
         <fieldset className="connectivity" onChange={connectivityChangeHandler}>
-                <legend>What connects to your device?</legend>
+                <legend>What connects to your device? {ConnetIcon}</legend>
                 <input
                 type="checkbox"
                 id="DisplayPort"

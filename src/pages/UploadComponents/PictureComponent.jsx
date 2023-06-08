@@ -1,10 +1,16 @@
 import { useState, useEffect} from 'react'
 import PictureUpload from './PictureUpload';
+<<<<<<< HEAD
 import { GetPics } from '../rs-api-endpoints'
+=======
+import { GetPics } from './rs-api-mocks'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faImages } from '@fortawesome/free-solid-svg-icons'
+>>>>>>> main
 
 
 export default function PictureComponent(props){
-
+  const ImageIcon = <FontAwesomeIcon icon={faImages} />
  
 
 
@@ -67,7 +73,7 @@ export default function PictureComponent(props){
      
       return(
           <fieldset className='uploadImg'>
-            <legend>Upload Images</legend>
+            <legend>Upload Images {ImageIcon}</legend>
               
               <p>{ apiResponse } </p>
                 

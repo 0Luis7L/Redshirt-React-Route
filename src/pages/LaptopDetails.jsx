@@ -9,7 +9,8 @@ import Type from './UploadComponents/type'
 import PictureComponent from './UploadComponents/PictureComponent'
 import SimilarPost from './UploadComponents/SimilarPost';
 import Price from './UploadComponents/Price';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleInfo, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
 import { useParams } from "react-router-dom";
 import { useState } from 'react'
@@ -22,6 +23,9 @@ import LaptopsContext from '../context/LaptopProvider';
 function LaptopDetails (){
 
   const { laptops } = useLaptops();
+
+    const ArrowIcon = <FontAwesomeIcon icon={faAngleDown} />
+
     // get the index of the laptop from the 
     const params = useParams()
 
@@ -30,7 +34,8 @@ function LaptopDetails (){
     const curr_laptop = laptops[params.idx];
 
     // state variable set to custom flag for laptop
-    const [ custom , setCustom ] = useState( curr_laptop.custom)
+    // Luis- I had to replace [curr_laptop.custom] with an empty array
+    const [ custom , setCustom ] = useState([])
 
     // component parent handlers
     // state variable determines if this page is processing a relist or creating a new item
@@ -130,51 +135,50 @@ function LaptopDetails (){
 
 
    }
-
+   //const curr_sku = curr_laptop.id something is wrong with the id. retuns as id undifined?
   const curr_sku = curr_laptop.id;
-
+   
 
     return (
    
       <>
         { !itemPosted ?       
         <div className="Upload-go">
-         <h1>Provide laptop details below:</h1>
+         <h1>Provide laptop details below: <FontAwesomeIcon icon={faCircleInfo} size="2xs" style={{paddingTop: 20 + "px"}} /></h1>
          <Form  onSubmit={ handleLaptopSubmit }>
-          
-         <Detail onHandle={handleChange} laptop={curr_laptop} customChanged={handleCustomChange} isCustom={custom}/>
 
-        { !itemFound || custom ?  ( 
-         <>
-          <div className="color--price">
-            <Color onHandle={handleColorChange} />
-            <Price onChange={handlePriceChange} />
-          </div>
-          <div className='connectivity--features'>
-            <Connect onHandle={handleConnectChange} />
-            <Features onHandle={handleFeatureChange} />
-          </div>
-           <Type onHandle={handleTypeChange} />
-              
+          <div className="Input-Page" alt="cyper circuit board " href="https://www.vecteezy.com/free-vector/hexagon">
+            <Detail onHandle={handleChange} laptop={curr_laptop} customChanged={handleCustomChange} isCustom={custom}/>
+            { !itemFound || custom ?  ( 
+            <>
+              <div className="color--price">
+                <Color onHandle={handleColorChange} />
+                <Price onChange={handlePriceChange} />
+              </div>
+              <div className='connectivity--features'>
+                <Connect onHandle={handleConnectChange} />
+                <Features onHandle={handleFeatureChange} />
+              </div>
+              <Type onHandle={handleTypeChange} />
             </>
-            
-        ):<></>}
-          <div className="pic">
-          <PictureComponent sku={ curr_sku } ></PictureComponent>
-       
+  
+              ):<></>}
+              <div className="pic">
+                <PictureComponent sku={ curr_sku } ></PictureComponent>
+              </div>
+              <div className="pic">
+                <SimilarPost sku={ curr_sku } SearchComplete={handleSimilarPostSearchComplete} ></SimilarPost>
+              </div>
+              <br />
+              <div className="submit-btn">
+                <button className='submit' >Submit {ArrowIcon}</button>
+              </div>
           </div>
-          <div className="pic">
-          <SimilarPost sku={ curr_sku } SearchComplete={handleSimilarPostSearchComplete} ></SimilarPost>
-          </div>
-          <br />
-          <div className="submit-btn">
-            <button className='submit' >Submit</button>
-          </div>
+
          </Form>
-      
         </div>  :
         <PostedItem item={itemPosted} ></PostedItem>  }
-      
+        
       </>
         
       )
@@ -187,3 +191,6 @@ function LaptopDetails (){
 
 
 export default LaptopDetails
+/*
+<a href="https://www.vecteezy.com/free-vector/hexagon">Hexagon Vectors by Vecteezy</a>
+*/

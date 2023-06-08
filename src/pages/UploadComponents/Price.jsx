@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoneyBillWave } from '@fortawesome/free-solid-svg-icons'
 
 // allows the user to input the price 
 // for the laptop
 export default  function Price(props) {
-
+    const MoneyIcon = <FontAwesomeIcon icon={faMoneyBillWave} style={{paddingRight: 10 + 'px'}} />
     // state variables for price change
     const [price, setPrice] = useState(100.00);
 
@@ -19,9 +21,15 @@ export default  function Price(props) {
 
     return (
         <div className="price">
-            <label className="price-label">Price $</label>
+            <label className="price-label">{MoneyIcon} Price $</label>
             <br />
-            <input type="number" min="1" step="any" value={price} onInput={e => updatePrice(e.target.value)}/>
+            <input 
+                data-testid="Price"
+                type="number" 
+                min="1" step="any" 
+                value={price} 
+                onInput={e => updatePrice(e.target.value)}
+            />
         </div>
     )
 
