@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {  useState,useEffect} from 'react'
 
 
-import { callGetUnlisted} from './rs-api-endpoints'
+import { GetUnlisted} from './rs-api-endpoints'
 import useLaptops from '../hooks/useLaptops';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
