@@ -1,12 +1,10 @@
 import { useState, useEffect} from 'react'
 import PictureUpload from './PictureUpload';
-<<<<<<< HEAD
 import { GetPics } from '../rs-api-endpoints'
-=======
-import { GetPics } from './rs-api-mocks'
+
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages } from '@fortawesome/free-solid-svg-icons'
->>>>>>> main
 
 
 export default function PictureComponent(props){

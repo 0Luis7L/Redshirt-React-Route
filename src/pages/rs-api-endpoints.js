@@ -1,4 +1,4 @@
-const debug = false;
+const debug = true;
 let base_url = "https://lgtolr.net/";
 
 if( debug)
@@ -107,7 +107,7 @@ const getUnlistedurl = base_url +  "api/Laptop/getunlisted"
 // async function to get json of
 // laptop object from passed sku
 
-export const callGetUnlisted = async () => {
+export const GetUnlisted = async () => {
   const auth_token = "Bearer " + getToken();
     const response = await fetch(getUnlistedurl, {
       headers: { 'Authorization': auth_token}
