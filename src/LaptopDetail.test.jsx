@@ -8,6 +8,7 @@ import Connect from './pages/UploadComponents/connectivity';
 import Features from './pages/UploadComponents/features';
 import Type from './pages/UploadComponents/type';
 import PictureComponent from './pages/UploadComponents/PictureComponent';
+import SimilarPost from './pages/UploadComponents/SimilarPost';
 
 describe("render Laptop details componets to the user", () => {
 //  Just a test for running the title
@@ -321,6 +322,27 @@ describe("render Laptop details componets to the user", () => {
             expect(changeHandler).toHaveBeenCalledTimes(1);
         })
     })
+    describe("Similar Post Link", () => {
+        // Test the render Similar Post Link
+        test("render Similar Post Link", async () => {
+            render(
+                <SimilarPost 
+                    itemFound={ () => {} } 
+                    title={ () => {} }
+                    itemId={ () => {} }
+                />
+            );
+            const SimilarPostLink = screen.getBy("Add pic");
+            expect(uploadPicInput).toBeVisible();
+        })
+        // Test for render Picture Upload Change input
+        test("shoud be able to Upload a Picture file input", async () => {
+            render(<PictureComponent changeHandler={ () => {}} />);
+            //const uploadPicInput = screen.getByLabelText("Add pic");
+            fireEvent.click(getByDisplayValue('Add pic'));
+            expect(changeHandler).toHaveBeenCalledTimes(1);
+        })
+    })
     
 });
 /*
@@ -340,5 +362,6 @@ custom: ""
 props:onHandle={handleChange} laptop={curr_laptop} customChanged={handleCustomChange} isCustom={custom}
 https://polvara.me/posts/testing-a-custom-select-with-react-testing-library
 for connect test { https://pretty-checkbox-react.netlify.app/docs/main-concepts/testing/ }
+
 
 */

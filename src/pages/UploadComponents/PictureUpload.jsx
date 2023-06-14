@@ -33,7 +33,7 @@ function PictureUpload(props){
     
 	return (
    <div>
-			<input type="file" name="file" onChange={changeHandler} className='picUpload' />
+			<input className="btn-file" type="file" name="file" onChange={changeHandler} style={{color: 'white'}}/>
 			{isFilePicked ? (
 				
 					<p>Filename: {selectedFile.name}</p>
@@ -44,7 +44,7 @@ function PictureUpload(props){
 				<p>Select a file to show details</p>
 			)}
 			<div>
-				<input className='' type="button" onClick={ addPicHandler } value="Add pic" /> 
+				<input className="btn-file" type="button" onClick={ addPicHandler } value="Add pic" /> 
 
 			</div>
 		</div>

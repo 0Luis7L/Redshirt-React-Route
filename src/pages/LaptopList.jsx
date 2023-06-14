@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {  useState,useEffect} from 'react'
 import { GetUnlisted } from './UploadComponents/rs-api-mocks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSquareCheck, faLaptop } from '@fortawesome/free-solid-svg-icons'
+import { faListCheck, faSquareCheck, faLaptop } from '@fortawesome/free-solid-svg-icons'
 
 
 // this component is used to query the redshirt api 
@@ -11,7 +11,8 @@ import { faSquareCheck, faLaptop } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function LaptopsList( ) {
-
+        const check = <FontAwesomeIcon icon={faSquareCheck} />;
+        const List = <FontAwesomeIcon icon={faListCheck} />
         const [ laptopList , setLaptopList] = useState([]);
 
 
@@ -59,8 +60,8 @@ export default function LaptopsList( ) {
 
          return (
           <div>
-            <h1>Laptop List</h1>
-            <p style={{marginTop: ('20px')}}>Here are the listed laptops that need to be checked: <FontAwesomeIcon icon={faSquareCheck} /></p>
+            <h1>Laptop List {List}</h1>
+            <p style={{marginTop: ('20px')}}>Here are the listed laptops that need to be checked {check} to the <a href="C:\Users\hayat\OneDrive\Documents\update\Redshirt-React-Route\src\pages\UploadComponents">Posted</a> page</p>
               <div className="List" alt="Blue and green background" href="https://www.vecteezy.com/free-vector/technology">
                 <div className="Laptops">
                   <>{ laptopList }</>
