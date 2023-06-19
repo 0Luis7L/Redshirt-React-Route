@@ -1,9 +1,10 @@
 import { UploadCsv } from "./rs-api-endpoints"
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faScrewdriverWrench, faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons'
 
 export default function RefurbisherUpload(){
+    const Tools = <FontAwesomeIcon icon={faScrewdriverWrench} />
     const UploadIcon = <FontAwesomeIcon icon={faArrowUpFromBracket} />
 
     const [selectedFile, setSelectedFile] = useState();
@@ -23,13 +24,13 @@ export default function RefurbisherUpload(){
 
     return ( 
         <div>
-            <h1>Upload Refurbished Laptops?</h1>
+            <h1>Upload Refurbished Laptops? {Tools}</h1>
             <br />
             <div className="Refurbished" alt="blue hexagon image background" href="https://www.vecteezy.com/free-vector/hexagon-wallpaper">
                 <fieldset className="refurbish">
                     <legend>Refurbish-Upload {UploadIcon}</legend>
-                    <input  type="file" onChange={changeHandler}/>
-                    <input  type="button" value="upload csv file" onClick={uploadHandler} />
+                    <input className="btn-file"  type="file" onChange={changeHandler} style={{color: 'white'}} />
+                    <input className="btn-file"  type="button" value="upload csv file" onClick={uploadHandler} />
                 </fieldset>
             </div>
         </div>

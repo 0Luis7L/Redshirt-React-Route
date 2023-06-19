@@ -7,7 +7,7 @@ import { GetUnlisted} from './rs-api-endpoints'
 import useLaptops from '../hooks/useLaptops';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSquareCheck, faLaptop } from '@fortawesome/free-solid-svg-icons'
+import { faListCheck, faSquareCheck, faLaptop } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -16,7 +16,8 @@ import { faSquareCheck, faLaptop } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function LaptopsList( ) {
-
+        const check = <FontAwesomeIcon icon={faSquareCheck} />;
+        const List = <FontAwesomeIcon icon={faListCheck} />
         const [ laptopList , setLaptopList] = useState([]);
 
         // for setting the global laptops
@@ -71,8 +72,8 @@ export default function LaptopsList( ) {
 
          return (
           <div>
-            <h1>Laptop List</h1>
-            <p style={{marginTop: ('20px')}}>Here are the listed laptops that need to be checked: <FontAwesomeIcon icon={faSquareCheck} /></p>
+            <h1>Laptop List {List}</h1>
+            <p style={{marginTop: ('20px')}}>Here are the listed laptops that need to be checked {check} to the <a href="C:\Users\hayat\OneDrive\Documents\update\Redshirt-React-Route\src\pages\UploadComponents">Posted</a> page</p>
               <div className="List" alt="Blue and green background" href="https://www.vecteezy.com/free-vector/technology">
                 <div className="Laptops">
                   <>{ laptopList }</>

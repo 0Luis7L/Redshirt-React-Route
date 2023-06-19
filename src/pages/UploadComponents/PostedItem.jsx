@@ -26,7 +26,7 @@ export default function PostedItem(props){
                     </div>
                     <div className="info">
                         <p>
-                            <a>{LinkIcon}{props.item.url}</a>
+                            <a href={props.item.url} target='_blank'>{LinkIcon}{props.item.url}</a>
                         </p>
                     </div>
                 </div>

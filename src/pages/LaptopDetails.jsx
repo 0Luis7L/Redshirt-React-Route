@@ -172,6 +172,9 @@ function LaptopDetails (){
               <br />
               <div className="submit-btn">
                 <button className='submit' >Submit {ArrowIcon}</button>
+                <button onClick={function AuctionClick () {alert("This action will remove the current laptop from the unlisted page")}} 
+                  className='submit' >Auction {ArrowIcon}
+                </button>
               </div>
           </div>
 

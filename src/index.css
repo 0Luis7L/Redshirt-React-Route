@@ -57,6 +57,13 @@ button {
     margin: 6px;
     border-radius: 4px;
 }
+.btn-file:hover {
+  background-color: var(--tertiary);
+}
+input[type=""] {
+  background-color: var(--tertiary);
+}
+/*detail inputs */
 .details {
   margin: 5px 0px 5px 15px;
 }

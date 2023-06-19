@@ -79,6 +79,13 @@ export default function Detail (props) {
             onChange={props.onHandle}
             value={props.laptop.screenSize}
             />
+            <input 
+            type="text"
+            placeholder="cpu speed"
+            name="CpuSpeed"
+            onChange={props.onHandle}
+            value={props.laptop.speed}
+            />
             <div className="custom">
                 <input
                 type="checkbox"
@@ -96,6 +103,15 @@ export default function Detail (props) {
             <textarea 
             type="text"
             placeholder="notes"
+            name="notes"
+            onChange={props.onHandle}
+            value={props.laptop.notes}
+            style={{backgroundColor: "rgba(255,255,255, 0.7)", borderColor: "white"}}
+            />
+            
+            <textarea 
+            type="text"
+            placeholder="additional info"
             name="notes"
             onChange={props.onHandle}
             value={props.laptop.notes}
