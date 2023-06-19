@@ -1,5 +1,5 @@
 import {laptop_list} from './UploadComponents/rs-api-mocks'
-import { CreateItem, ReviseItem, ToggleCustom } from './rs-api-endpoints';
+import { CallRemove, CreateItem, ReviseItem, ToggleCustom } from './rs-api-endpoints';
 import { Form, redirect } from "react-router-dom";
 import Color from './UploadComponents/color'
 import Detail from './UploadComponents/detail'
@@ -17,12 +17,15 @@ import { useState } from 'react'
 import PostedItem from './UploadComponents/PostedItem';
 import useLaptops from '../hooks/useLaptops';
 import LaptopsContext from '../context/LaptopProvider';
+import { useNavigate } from "react-router-dom";
 
 
 // The page for posting a specific laptop
 function LaptopDetails (){
 
   const { laptops } = useLaptops();
+
+  const navigate = useNavigate();
 
     const ArrowIcon = <FontAwesomeIcon icon={faAngleDown} />
 
@@ -47,7 +50,7 @@ function LaptopDetails (){
     function handleChange(event){
     /*  const {name, value, type, checked} = event.target
       setData(prevData => {
-        return {
+        return { 
           ...prevData,
           [name]: type === "checkbox" ? checked : value
         }
@@ -126,14 +129,21 @@ function LaptopDetails (){
         resp =  await   ReviseItem(curr_laptop.id);
       } 
       // 2)  just create a new item 
-      else{
+      else{ 
         resp = await CreateItem(curr_laptop);
       }
 
       // update the dom , and show the resp 
       setItemPosted(resp);
 
+   }
 
+   const AuctionClick = async ( )=>{
+    console.log("inside auctionClick", curr_laptop.id);
+      const ret_id=  await CallRemove(curr_laptop.id);
+
+     
+      navigate("/unlisted");
    }
    //const curr_sku = curr_laptop.id something is wrong with the id. retuns as id undifined?
   const curr_sku = curr_laptop.id;
@@ -172,13 +182,12 @@ function LaptopDetails (){
               <br />
               <div className="submit-btn">
                 <button className='submit' >Submit {ArrowIcon}</button>
-                <button onClick={function AuctionClick () {alert("This action will remove the current laptop from the unlisted page")}} 
-                  className='submit' >Auction {ArrowIcon}
-                </button>
+         
               </div>
           </div>
 
          </Form>
+         <button onClick={ AuctionClick }  className='submit' >Auction {ArrowIcon}       </button>
         </div>  :
         <PostedItem item={itemPosted} ></PostedItem>  }
         

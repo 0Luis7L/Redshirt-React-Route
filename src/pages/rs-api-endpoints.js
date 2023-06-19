@@ -17,7 +17,9 @@ export async function CreateItem( laptop){
     const auth_token = "Bearer " + getToken();
     // dev server uri
     const uri = base_url + 'api/Laptop/createitem';
-    console.log("inside createitem (real)");
+    console.log("inside createitem (real)");  
+
+
     const resp = await fetch( uri, {
         method: 'POST',
         body: JSON.stringify(laptop),
@@ -32,7 +34,6 @@ export async function CreateItem( laptop){
     // return item
     return item;
 
-    
 }
 
 // updates a laptop with the passed id
@@ -214,4 +215,22 @@ export const CallLogin = async ( creds) =>{
             data.roles = null;
     data.role = "";
     return data;
+}
+
+// removes laptop with id from unlisted
+export const CallRemove = async (id) =>{
+
+  const auth_token = "Bearer " + getToken();
+      const remove_url = base_url + "api/Laptop/removeunlisted/" + id;
+      console.log("inside CallRemove")
+
+      const resp = await fetch(remove_url,
+        {method:'POST',
+          headers: { 'Authorization': auth_token}});
+        
+        
+
+    return  resp.text();
+
+
 }
