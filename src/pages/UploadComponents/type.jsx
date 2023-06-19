@@ -71,7 +71,15 @@ export default function Type (props){
             <label htmlFor="workstation">Workstation</label>
 
             
-            
+            <input 
+                type="radio" 
+                id="Multi-Type" 
+                checked={props.value}
+                onChange={props.onHandle}
+                name="type"
+                value="Multi-Type"
+            />
+            <label htmlFor="Multi-Type">Multi-Type</label>
 
             </fieldset>
         </div>

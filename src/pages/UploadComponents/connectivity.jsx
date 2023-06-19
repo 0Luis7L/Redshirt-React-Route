@@ -82,7 +82,7 @@ export default function Connect (props){
   
                 />
                 <label htmlFor="MicroUSB">Micro-USB</label>
-                
+                <br />
                 <input
                 type="checkbox"
                 id="MiniUSB"
@@ -90,7 +90,7 @@ export default function Connect (props){
        
                 />
                 <label htmlFor="MiniUSB">Mini-USB</label>
-                <br />
+                
                 <input
                 type="checkbox"
                 id="USB1.0/1.1"
@@ -106,7 +106,7 @@ export default function Connect (props){
     
                 />
                 <label htmlFor="USB2">USB 2.0</label>
-                
+                <br />
                 <input
                 type="checkbox"
                 id="USB3"
@@ -130,7 +130,7 @@ export default function Connect (props){
              
                 />
                 <label htmlFor="USB3.2">USB 3.2</label>
-                <br />
+                
                 <input
                 type="checkbox"
                 id="usbC"
@@ -139,6 +139,7 @@ export default function Connect (props){
                 />
                 <label htmlFor="usbC">USB-C</label>
                 
+                <br />
                 <input
                 type="checkbox"
                 id="SD"
@@ -154,6 +155,14 @@ export default function Connect (props){
              
                 />
                 <label htmlFor="MicroSD">MicroSD Card Slot</label>
+                
+                <input
+                type="checkbox"
+                id="Thunderbolt"
+                name="connect"
+             
+                />
+                <label htmlFor="Thunderbolt">Thunderbolt</label>
                 
             </fieldset>
     
