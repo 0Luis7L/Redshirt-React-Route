@@ -13,7 +13,7 @@ function PictureUpload(props){
 	const changeHandler = (event) => {
 		setSelectedFile(event.target.files[0]);
 		setIsFilePicked(true);
-
+		
 	};
 
 
@@ -28,7 +28,7 @@ function PictureUpload(props){
 		// just output the file name for debugging
 		console.log( selectedFile );
 		const jsonData = await callAddPic(selectedFile,props.sku);
-  
+		
 		// call passed handler
 		props.uploadComplete(jsonData);
 		
@@ -38,18 +38,18 @@ function PictureUpload(props){
     
 	return (
    <div>
-			<input className="btn-file" type="file" name="file" onChange={changeHandler} style={{color: 'white'}}/>
+			<input type="file" name="file" multiple="multiple" onChange={changeHandler} />
 			{isFilePicked ? (
 				
 					<p>Filename: {selectedFile.name}</p>
 				
 				
-				
+			
 			) : (
 				<p>Select a file to show details</p>
 			)}
 			<div>
-				<input className="btn-file" type="button" onClick={ addPicHandler } value="Add pic" /> 
+				<input type="button" onClick={ addPicHandler } value="Add pic" /> 
 
 			</div>
 		</div>

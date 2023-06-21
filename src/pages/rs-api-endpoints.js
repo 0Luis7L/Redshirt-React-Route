@@ -1,4 +1,4 @@
-const debug = true;
+const debug = false;
 let base_url = "https://lgtolr.net/";
 
 if( debug)
