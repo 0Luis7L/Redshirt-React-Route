@@ -13,7 +13,7 @@ export default function RefurbisherUpload(){
 	const changeHandler = (event) => {
 		setSelectedFile(event.target.files[0]);
 		setIsFilePicked(true);
-
+        
 	};
 
     const uploadHandler  = async () =>{
@@ -22,7 +22,7 @@ export default function RefurbisherUpload(){
             }
     }
 
-    return ( 
+      return ( 
         <div>
             <h1>Upload Refurbished Laptops? {Tools}</h1>
             <br />

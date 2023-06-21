@@ -40,6 +40,10 @@ function LaptopDetails (){
     // Luis- I had to replace [curr_laptop.custom] with an empty array
     const [ custom , setCustom ] = useState([])
 
+    // state variable for laptop info
+
+    const [ addInfo, setAddInfo] = useState(curr_laptop.info);
+
     // component parent handlers
     // state variable determines if this page is processing a relist or creating a new item
    const [ itemFound , setItemFound] = useState(false);
@@ -149,6 +153,14 @@ function LaptopDetails (){
   const curr_sku = curr_laptop.id;
    
 
+  const onInfoChange= async (e) =>{
+      
+      console.log(e.target.value);
+      curr_laptop.info = e.target.value;
+      setAddInfo(curr_laptop.info);
+
+  }
+
     return (
    
       <>
@@ -158,7 +170,7 @@ function LaptopDetails (){
          <Form  onSubmit={ handleLaptopSubmit }>
 
           <div className="Input-Page" alt="cyper circuit board " href="https://www.vecteezy.com/free-vector/hexagon">
-            <Detail onHandle={handleChange} laptop={curr_laptop} customChanged={handleCustomChange} isCustom={custom}/>
+            <Detail onHandle={handleChange} laptop={curr_laptop} customChanged={handleCustomChange} isCustom={custom} infoChange={onInfoChange}/>
             { !itemFound || custom ?  ( 
             <>
               <div className="color--price">

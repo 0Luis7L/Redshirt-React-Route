@@ -96,8 +96,6 @@ export const GetPics = async ( sku) => {
       });
       const jsonResponse = await response.json();
       
-
-
  
     return jsonResponse;
   };
@@ -228,8 +226,7 @@ export const CallRemove = async (id) =>{
         {method:'POST',
           headers: { 'Authorization': auth_token}});
         
-        
-
+      
     return  resp.text();
 
 

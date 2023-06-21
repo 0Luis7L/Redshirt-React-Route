@@ -113,8 +113,8 @@ export default function Detail (props) {
             type="text"
             placeholder="additional info"
             name="notes"
-            onChange={props.onHandle}
-            value={props.laptop.notes}
+            onChange={props.infoChange}
+            value={props.laptop.info}
             style={{backgroundColor: "rgba(255,255,255, 0.7)", borderColor: "white"}}
             />
         </div>
