@@ -114,6 +114,7 @@ function LaptopDetails (){
 
 
    // handler passed to detail component 
+
    // handles change of custom / non-custom
    const  handleCustomChange = async( e) =>{
       ToggleCustom(curr_laptop.id);
@@ -170,7 +171,7 @@ function LaptopDetails (){
          <Form  onSubmit={ handleLaptopSubmit }>
 
           <div className="Input-Page" alt="cyper circuit board " href="https://www.vecteezy.com/free-vector/hexagon">
-            <Detail onHandle={handleChange} laptop={curr_laptop} customChanged={handleCustomChange} isCustom={custom} infoChange={onInfoChange}/>
+            <Detail onHandle={handleChange} laptop={curr_laptop} customChanged={handleCustomChange} isCustom={curr_laptop.custom} infoChange={onInfoChange}/>
             { !itemFound || custom ?  ( 
             <>
               <div className="color--price">
