@@ -9,6 +9,8 @@ export default function RefurbisherUpload(){
 
     const [selectedFile, setSelectedFile] = useState();
 	const [isFilePicked, setIsFilePicked] = useState(false);
+    const [ uploaded , setUploaded] = useState(false);
+    const [ uploadResult, setUploadResult] = useState();
     
 	const changeHandler = (event) => {
 		setSelectedFile(event.target.files[0]);
@@ -18,7 +20,11 @@ export default function RefurbisherUpload(){
 
     const uploadHandler  = async () =>{
             if( isFilePicked){
-            UploadCsv(selectedFile);
+          const result =   await UploadCsv(selectedFile);
+          setUploadResult(result);
+            setUploaded(true);
+         
+
             }
     }
 
@@ -26,13 +32,47 @@ export default function RefurbisherUpload(){
         <div>
             <h1>Upload Refurbished Laptops? {Tools}</h1>
             <br />
+         
             <div className="Refurbished" alt="blue hexagon image background" href="https://www.vecteezy.com/free-vector/hexagon-wallpaper">
-                <fieldset className="refurbish">
+            { !uploaded ?   
+              <fieldset className="refurbish">
                     <legend>Refurbish-Upload {UploadIcon}</legend>
                     <input className="btn-file"  type="file" onChange={changeHandler} style={{color: 'white'}} />
                     <input className="btn-file"  type="button" value="upload csv file" onClick={uploadHandler} />
-                </fieldset>
+                </fieldset> : 
+                <div>
+                    <p>
+                        <table>
+                            <tr>
+                                <td>Laptops Added</td>
+                                <td>{  uploadResult.laptopsAdded.length } </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Laptops Updated
+                                </td>
+                                <td>
+                                    { uploadResult.laptopsUpdated.length }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Laptops with Error
+                                </td>
+                                <td>
+                                    { uploadResult.laptopsWithError }
+                                </td>
+                            </tr>
+
+                        </table>
+             
+                    </p>
+                    </div>
+            }
+
             </div>
+
+
         </div>
     
     )

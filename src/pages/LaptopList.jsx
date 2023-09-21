@@ -50,7 +50,7 @@ export default function LaptopsList( ) {
                         // result
                         // map the results to a list of laptops , as links
                         let idx=0;
-                 
+                        console.log(result)
                         const items = result.map( (lt) => ( 
 
                           <li className='Laptop' key={lt.id}>

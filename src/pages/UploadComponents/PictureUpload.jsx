@@ -11,7 +11,8 @@ function PictureUpload(props){
 	
 
 	const changeHandler = (event) => {
-		setSelectedFile(event.target.files[0]);
+		//	console.log("selected files", event.target.files);
+		setSelectedFile(event.target.files);
 		setIsFilePicked(true);
 		
 	};
@@ -26,7 +27,7 @@ function PictureUpload(props){
 			return;
 		}
 		// just output the file name for debugging
-		console.log( selectedFile );
+		// console.log( selectedFile );
 		const jsonData = await callAddPic(selectedFile,props.sku);
 		
 		// call passed handler

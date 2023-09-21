@@ -16,6 +16,8 @@ export default function Login(){
     const [ username,setUser] = useState('')
     const [ pwd, setPwd] = useState('')
 
+    const [ error, setError] = useState(false);
+
     const  handlePwdChange=(e) =>{
         setPwd( e.target.value);
 
@@ -39,6 +41,10 @@ export default function Login(){
 
         const result = await CallLogin(creds);
         
+        if( result == null){
+            setError(true);
+            return;
+        }
         console.log("result:", JSON.stringify(result));
         
         // check to see if valid user
@@ -53,6 +59,11 @@ export default function Login(){
                         navigate("/unlisted");
         if( result.roles[0] == 3000)
                         navigate("/refurbish");
+        else{
+                // display some feedback to the user
+                setError(true);
+
+        }
         
         
     }
@@ -85,7 +96,16 @@ export default function Login(){
             <div className="loginBTN">
                 <button className="BTNlogin" onClick={handleLogin} type='submit'>Login</button>
             </div>
+
+            {error ? 
+            <p>
+            There was some error with 
+            the credentials provided.
+            </p> :
+            <></>
+        }
             </form>
+
         </div>
         </div>
     )

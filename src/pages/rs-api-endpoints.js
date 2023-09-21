@@ -1,4 +1,4 @@
-const debug = false;
+const debug = true;
 let base_url = "https://lgtolr.net/";
 
 if( debug)
@@ -6,7 +6,7 @@ if( debug)
 
 
 function getToken(){
-  return localStorage.getItem("rs-token");
+  return localStorage.getItem("rs-token");1
 }
 
 // post a new laptop 
@@ -61,6 +61,7 @@ export const callAddPic = async (selectedFile,sku) => {
     const formData = new FormData();
     const auth_token = "Bearer " + getToken();
     // append selectedFile as array of files
+    console.log(selectedFile);
     for(const file of selectedFile){
       console.log(file.name)
     formData.append('files', file, file.name);
@@ -151,7 +152,8 @@ export const UploadCsv = async ( csv) => {
         }
     );
 
-    const laptops_added = await resp.text();
+    const laptops_added = await resp.json();
+    console.log(laptops_added);
     return laptops_added;
 
 
@@ -195,6 +197,9 @@ export const CallLogin = async ( creds) =>{
     console.log("Inside CallLogin")
     console.log(creds);
     const login_url = base_url + "api/Login/login";
+
+
+  
    const resp =  await fetch(login_url, {
         method: 'POST',
         body: JSON.stringify(creds),
@@ -202,6 +207,12 @@ export const CallLogin = async ( creds) =>{
        headers: { 'Content-Type': 'application/json'}
         
     });
+
+    if(resp.status == 404){
+      return null;
+    }
+
+  
     // get the json
     const data = await resp.json();
     // check about the roles

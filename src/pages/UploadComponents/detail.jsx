@@ -9,6 +9,14 @@ export default function Detail (props) {
 
     return (
         <div className="details">
+            <input
+            type="text"
+            placeholder="Title"
+            name="title"
+            onChange={props.titleChange}
+            value={props.laptop.title}
+            style={{width:"93%",clear:"right"}}
+            />
             <input 
             type="text"
             placeholder='SKU'
@@ -117,6 +125,7 @@ export default function Detail (props) {
             value={props.laptop.info}
             style={{backgroundColor: "rgba(255,255,255, 0.7)", borderColor: "white"}}
             />
+             
         </div>
     )
 }

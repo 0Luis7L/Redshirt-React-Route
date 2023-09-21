@@ -32,13 +32,13 @@ function LaptopDetails (){
     // get the index of the laptop from the 
     const params = useParams()
 
-     console.log(params.idx)
+    // console.log(params.idx)
     // get the current laptop by idx
     const curr_laptop = laptops[params.idx];
-
+ // console.log("Title:", curr_laptop.title);
     // state variable set to custom flag for laptop
     // Luis- I had to replace [curr_laptop.custom] with an empty array
-    const [ custom , setCustom ] = useState([])
+    const [ custom , setCustom ] = useState(curr_laptop.custom)
 
     // state variable for laptop info
 
@@ -50,6 +50,9 @@ function LaptopDetails (){
 
    // set to true after a successful submit response , false by defualt
    const [ itemPosted, setItemPosted] = useState(false);
+
+   // title 
+   const [ itemTitle, setItemTitle] = useState(curr_laptop.title);
     
     function handleChange(event){
     /*  const {name, value, type, checked} = event.target
@@ -64,7 +67,7 @@ function LaptopDetails (){
     // function for debugging
     // just shows the info about curr_laptop
     function showLaptop(){
-        console.log(JSON.stringify(curr_laptop));
+     //   console.log(JSON.stringify(curr_laptop));
 
     }
 
@@ -100,7 +103,8 @@ function LaptopDetails (){
     
   // handles the SimilarPost completion
   function handleSimilarPostSearchComplete( found ){
-      
+
+    console.log('Found:',found);
       setItemFound(found);
   }
 
@@ -120,7 +124,7 @@ function LaptopDetails (){
       ToggleCustom(curr_laptop.id);
       curr_laptop.custom = e.target.checked;
       setCustom(curr_laptop.custom);
-      console.log("current laptop custom:" , curr_laptop.custom);
+     // console.log("current laptop custom:" , curr_laptop.custom);
    }
 
    // handler function for the submit buttonClick
@@ -128,7 +132,15 @@ function LaptopDetails (){
       e.preventDefault();
       // Two different scenarios
       // 1) the laptop is not custom and there is a similar post ( just update)
-      console.log("inside form handler")
+     // console.log("inside form handler")
+
+      if( curr_laptop.title.length > 80 &&  !itemFound){
+        alert("Please change the title to less than 80 characters and try clicking submit again.");
+        return;
+      }
+
+      console.log("custom",custom);
+      console.log("itemFound", itemFound);
       let resp = {};
       if( !custom && itemFound){
         resp =  await   ReviseItem(curr_laptop.id);
@@ -143,8 +155,16 @@ function LaptopDetails (){
 
    }
 
+   const handleTitleChange = async (e) =>{
+      // change curr_laptop title
+      curr_laptop.title = e.target.value;
+      setItemTitle(curr_laptop.title);
+      console.log("Title Length:", curr_laptop.title.length);
+      
+
+   }
    const AuctionClick = async ( )=>{
-    console.log("inside auctionClick", curr_laptop.id);
+   // console.log("inside auctionClick", curr_laptop.id);
       const ret_id=  await CallRemove(curr_laptop.id);
 
      
@@ -156,7 +176,7 @@ function LaptopDetails (){
 
   const onInfoChange= async (e) =>{
       
-      console.log(e.target.value);
+    //  console.log(e.target.value);
       curr_laptop.info = e.target.value;
       setAddInfo(curr_laptop.info);
 
@@ -171,8 +191,8 @@ function LaptopDetails (){
          <Form  onSubmit={ handleLaptopSubmit }>
 
           <div className="Input-Page" alt="cyper circuit board " href="https://www.vecteezy.com/free-vector/hexagon">
-            <Detail onHandle={handleChange} laptop={curr_laptop} customChanged={handleCustomChange} isCustom={curr_laptop.custom} infoChange={onInfoChange}/>
-            { !itemFound || custom ?  ( 
+            <Detail onHandle={handleChange} laptop={curr_laptop} customChanged={handleCustomChange} isCustom={curr_laptop.custom} infoChange={onInfoChange} titleChange={ handleTitleChange } />
+            { !itemFound  || custom ?  ( 
             <>
               <div className="color--price">
                 <Color onHandle={handleColorChange} />
@@ -185,7 +205,7 @@ function LaptopDetails (){
               <Type onHandle={handleTypeChange} />
             </>
   
-              ):<></>}
+              ):<></> }
               <div className="pic">
                 <PictureComponent sku={ curr_sku } ></PictureComponent>
               </div>

@@ -40,11 +40,12 @@ export default function SimilarPost ( props ){
                 let found = false;
                 if( result.sku  != 0){
                     // change the link to the item 
-                    
-                    setItemFound(result.url);
+                    console.log("found:",result.listingDetails.viewItemURL);
+                    setItemFound(result.listingDetails.viewItemURL);
                     // and item id
                     setItemId(result.id);
                     // set the title which will be the text of the link
+                    console.log(result.title);
                     setTitle(result.title);
 
                     // send true back up to the parent component
@@ -55,7 +56,7 @@ export default function SimilarPost ( props ){
                     setItemFound("No similar items found");
                     setItemId("No similar items found");
                 }
-                
+                console.log("calling search complete with found:", found);
             // let the parent know we are done
             props.SearchComplete(found);
                 
@@ -68,7 +69,7 @@ export default function SimilarPost ( props ){
     return ( 
             <fieldset className='similarPost'>
                 <legend>Similar Post {PostIcon}</legend>
-                <a href={ itemFound }> {title } </a>
+                <a href={ itemFound } > {title } </a>
                  { itemId } 
             </fieldset>)
 
